@@ -16,29 +16,31 @@ class Utilities {
         view.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         iv.image = image
-        view.addSubview(iv)
-        iv.anchor(left: view.leftAnchor, bottom: view.bottomAnchor,
-                  paddingLeft: 8, paddingBottom: 8)
-        iv.setDimensions(width: 24, height: 24)
         
         view.addSubview(textField)
-        textField.anchor(left: iv.rightAnchor, bottom: view.bottomAnchor,
-                         right: view.rightAnchor, paddingLeft: 8, paddingBottom: 8)
+        textField.layer.cornerRadius = 20
+        textField.backgroundColor = .textBoxGray
+        textField.anchor(left: view.leftAnchor, bottom: view.bottomAnchor,
+                         right: view.rightAnchor, paddingLeft: 8, paddingBottom: 8, height: 50 )
         
-        let dividerView = UIView()
-        dividerView.backgroundColor = .white
-        view.addSubview(dividerView)
-        dividerView.anchor(left: view.leftAnchor, bottom: view.bottomAnchor,
-                           right: view.rightAnchor, paddingLeft: 8, height: 0.75)
+        
+        textField.addSubview(iv)
+        textField.setLeftPaddingPoints(40)
+        iv.tintColor = .black
+        iv.anchor(left: textField.leftAnchor, bottom: textField.bottomAnchor,
+                  paddingLeft: 8, paddingBottom: 15)
+        iv.setDimensions(width: 21, height: 21)
+        
         
         return view
     }
     
     func textField(withPlaceholder placeholder: String) -> UITextField {
         let tf = UITextField()
-        tf.textColor = .white
+        
+        tf.textColor = .black
         tf.font = UIFont.systemFont(ofSize: 16)
-        tf.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        tf.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         return tf
     }
     

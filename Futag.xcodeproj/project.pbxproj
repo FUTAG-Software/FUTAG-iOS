@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38F8EE94C1D685739886AB98 /* Pods_FutagTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FBC8B7BB09E177E9E31C869 /* Pods_FutagTests.framework */; };
 		5F35146E278A4A5D003F3097 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F35146D278A4A5D003F3097 /* AppDelegate.swift */; };
 		5F351470278A4A5D003F3097 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F35146F278A4A5D003F3097 /* SceneDelegate.swift */; };
 		5F351472278A4A5D003F3097 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F351471278A4A5D003F3097 /* ViewController.swift */; };
@@ -20,6 +21,20 @@
 		5F3514A9278A4B44003F3097 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3514A8278A4B44003F3097 /* Constants.swift */; };
 		5F3514AB278A4B59003F3097 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3514AA278A4B59003F3097 /* UserService.swift */; };
 		5F3514AD278A4B63003F3097 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3514AC278A4B63003F3097 /* AuthService.swift */; };
+		5F3F3385278B793B002AD9EB /* FTRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3F3384278B793B002AD9EB /* FTRegisterViewController.swift */; };
+		5F93388F27942CF200998668 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F93388E27942CF200998668 /* User.swift */; };
+		5F93389527943EC900998668 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5F93389427943EC900998668 /* IQKeyboardManagerSwift */; };
+		5FB30DC9278B178800F34A23 /* BlackBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB30DC8278B178800F34A23 /* BlackBoard.swift */; };
+		5FB30DCB278B2B8A00F34A23 /* FTRegisterOrLoginScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB30DCA278B2B8A00F34A23 /* FTRegisterOrLoginScreenViewController.swift */; };
+		5FB30DCD278B3DA600F34A23 /* FTMainTabBarControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB30DCC278B3DA600F34A23 /* FTMainTabBarControllerViewController.swift */; };
+		5FB30DCF278B3E5100F34A23 /* FTMainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB30DCE278B3E5100F34A23 /* FTMainScreenViewController.swift */; };
+		5FB30DD1278B3E6400F34A23 /* FTBlogScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB30DD0278B3E6400F34A23 /* FTBlogScreenViewController.swift */; };
+		5FB30DD3278B3E7800F34A23 /* FTEventsScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB30DD2278B3E7800F34A23 /* FTEventsScreenViewController.swift */; };
+		5FB30DD5278B3E8800F34A23 /* FTProfileScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB30DD4278B3E8800F34A23 /* FTProfileScreenViewController.swift */; };
+		5FB30DD7278B3EA000F34A23 /* FTExtrasScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB30DD6278B3EA000F34A23 /* FTExtrasScreenViewController.swift */; };
+		5FB30DDA278B4BB700F34A23 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5FB30DD9278B4BB700F34A23 /* Kingfisher */; };
+		5FB5194E27A192CC00D58F6D /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB5194D27A192CC00D58F6D /* AuthenticationViewModel.swift */; };
+		5FB5195027A1989500D58F6D /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB5194F27A1989500D58F6D /* ImageUploader.swift */; };
 		5FC34061278ADF34006CA4B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5FC34060278ADF34006CA4B1 /* GoogleService-Info.plist */; };
 		5FC34064278AE13B006CA4B1 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5FC34063278AE13B006CA4B1 /* FirebaseFirestore */; };
 		5FC34066278AE13B006CA4B1 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 5FC34065278AE13B006CA4B1 /* FirebaseDatabase */; };
@@ -36,6 +51,8 @@
 		5FC34080278AE828006CA4B1 /* blog.json in Resources */ = {isa = PBXBuildFile; fileRef = 5FC3407D278AE828006CA4B1 /* blog.json */; };
 		5FC34081278AE828006CA4B1 /* giris.json in Resources */ = {isa = PBXBuildFile; fileRef = 5FC3407E278AE828006CA4B1 /* giris.json */; };
 		5FC34082278AE828006CA4B1 /* takım.json in Resources */ = {isa = PBXBuildFile; fileRef = 5FC3407F278AE828006CA4B1 /* takım.json */; };
+		74BA047A6E768A1EDBE10DCB /* Pods_Futag_FutagUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98795C780D233C410DE60FEE /* Pods_Futag_FutagUITests.framework */; };
+		C9592934B2DE0BCAD3570191 /* Pods_Futag.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2AD81E123858A1FFE0DA7B /* Pods_Futag.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +73,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0282D37B4DD0C9683E0CFA4A /* Pods-Futag-FutagUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Futag-FutagUITests.debug.xcconfig"; path = "Target Support Files/Pods-Futag-FutagUITests/Pods-Futag-FutagUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		206DDBF340EA03EA74451197 /* Pods-Futag-FutagUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Futag-FutagUITests.release.xcconfig"; path = "Target Support Files/Pods-Futag-FutagUITests/Pods-Futag-FutagUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2204E092627F51072D5FBCFE /* Pods-FutagTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FutagTests.debug.xcconfig"; path = "Target Support Files/Pods-FutagTests/Pods-FutagTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2E110ACB0ADDFCFCD7487D44 /* Pods-Futag.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Futag.debug.xcconfig"; path = "Target Support Files/Pods-Futag/Pods-Futag.debug.xcconfig"; sourceTree = "<group>"; };
+		2FBC8B7BB09E177E9E31C869 /* Pods_FutagTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FutagTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F35146A278A4A5D003F3097 /* Futag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Futag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F35146D278A4A5D003F3097 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F35146F278A4A5D003F3097 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +97,18 @@
 		5F3514A8278A4B44003F3097 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5F3514AA278A4B59003F3097 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		5F3514AC278A4B63003F3097 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		5F3F3384278B793B002AD9EB /* FTRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRegisterViewController.swift; sourceTree = "<group>"; };
+		5F93388E27942CF200998668 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5FB30DC8278B178800F34A23 /* BlackBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackBoard.swift; sourceTree = "<group>"; };
+		5FB30DCA278B2B8A00F34A23 /* FTRegisterOrLoginScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRegisterOrLoginScreenViewController.swift; sourceTree = "<group>"; };
+		5FB30DCC278B3DA600F34A23 /* FTMainTabBarControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTMainTabBarControllerViewController.swift; sourceTree = "<group>"; };
+		5FB30DCE278B3E5100F34A23 /* FTMainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTMainScreenViewController.swift; sourceTree = "<group>"; };
+		5FB30DD0278B3E6400F34A23 /* FTBlogScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTBlogScreenViewController.swift; sourceTree = "<group>"; };
+		5FB30DD2278B3E7800F34A23 /* FTEventsScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTEventsScreenViewController.swift; sourceTree = "<group>"; };
+		5FB30DD4278B3E8800F34A23 /* FTProfileScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTProfileScreenViewController.swift; sourceTree = "<group>"; };
+		5FB30DD6278B3EA000F34A23 /* FTExtrasScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTExtrasScreenViewController.swift; sourceTree = "<group>"; };
+		5FB5194D27A192CC00D58F6D /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		5FB5194F27A1989500D58F6D /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		5FC34060278ADF34006CA4B1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5FC34077278AE764006CA4B1 /* FTOnBoardingScreen1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTOnBoardingScreen1ViewController.swift; sourceTree = "<group>"; };
 		5FC34079278AE770006CA4B1 /* FTOnBoardingScreen2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTOnBoardingScreen2ViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +116,10 @@
 		5FC3407D278AE828006CA4B1 /* blog.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = blog.json; sourceTree = "<group>"; };
 		5FC3407E278AE828006CA4B1 /* giris.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = giris.json; sourceTree = "<group>"; };
 		5FC3407F278AE828006CA4B1 /* takım.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "takım.json"; sourceTree = "<group>"; };
+		7011205713D8741BB6DBC46C /* Pods-FutagTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FutagTests.release.xcconfig"; path = "Target Support Files/Pods-FutagTests/Pods-FutagTests.release.xcconfig"; sourceTree = "<group>"; };
+		98795C780D233C410DE60FEE /* Pods_Futag_FutagUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Futag_FutagUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0077AB51BEE73B5D173E4AE /* Pods-Futag.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Futag.release.xcconfig"; path = "Target Support Files/Pods-Futag/Pods-Futag.release.xcconfig"; sourceTree = "<group>"; };
+		BC2AD81E123858A1FFE0DA7B /* Pods_Futag.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Futag.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,10 +132,13 @@
 				5FC34071278AE431006CA4B1 /* Lottie in Frameworks */,
 				5FC34074278AE49E006CA4B1 /* SDWebImage in Frameworks */,
 				5FC3406E278AE13B006CA4B1 /* FirebaseAuth in Frameworks */,
+				5F93389527943EC900998668 /* IQKeyboardManagerSwift in Frameworks */,
 				5FC3406A278AE13B006CA4B1 /* FirebaseStorage in Frameworks */,
 				5FC3406C278AE13B006CA4B1 /* FirebaseCrashlytics in Frameworks */,
 				5FC34064278AE13B006CA4B1 /* FirebaseFirestore in Frameworks */,
+				5FB30DDA278B4BB700F34A23 /* Kingfisher in Frameworks */,
 				5FC34068278AE13B006CA4B1 /* FirebaseAnalytics in Frameworks */,
+				C9592934B2DE0BCAD3570191 /* Pods_Futag.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38F8EE94C1D685739886AB98 /* Pods_FutagTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74BA047A6E768A1EDBE10DCB /* Pods_Futag_FutagUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +168,8 @@
 				5F351483278A4A5F003F3097 /* FutagTests */,
 				5F35148E278A4A5F003F3097 /* FutagUITests */,
 				5F35146B278A4A5D003F3097 /* Products */,
+				F7FB5195F1ED73FD59F00E2D /* Pods */,
+				A100763E4D07D08FF60722B4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -183,6 +228,7 @@
 				5F3514A4278A4B2E003F3097 /* Extensions.swift */,
 				5F3514A6278A4B38003F3097 /* Utilities.swift */,
 				5F3514A8278A4B44003F3097 /* Constants.swift */,
+				5FB30DC8278B178800F34A23 /* BlackBoard.swift */,
 				5FC3407D278AE828006CA4B1 /* blog.json */,
 				5FC3407E278AE828006CA4B1 /* giris.json */,
 				5FC3407F278AE828006CA4B1 /* takım.json */,
@@ -195,6 +241,7 @@
 			children = (
 				5F3514AA278A4B59003F3097 /* UserService.swift */,
 				5F3514AC278A4B63003F3097 /* AuthService.swift */,
+				5FB5194F27A1989500D58F6D /* ImageUploader.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -209,6 +256,7 @@
 				5F3514B1278A4C04003F3097 /* MainScreen */,
 				5F3514B0278A4B96003F3097 /* Authentication */,
 				5F3514AF278A4B73003F3097 /* OnBoardingScreen */,
+				5FB30DCC278B3DA600F34A23 /* FTMainTabBarControllerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -216,6 +264,7 @@
 		5F3514A1278A4ABA003F3097 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				5FB5194D27A192CC00D58F6D /* AuthenticationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -230,6 +279,7 @@
 		5F3514A3278A4AD7003F3097 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5F93388E27942CF200998668 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -247,6 +297,8 @@
 		5F3514B0278A4B96003F3097 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				5FB30DCA278B2B8A00F34A23 /* FTRegisterOrLoginScreenViewController.swift */,
+				5F3F3384278B793B002AD9EB /* FTRegisterViewController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -254,6 +306,7 @@
 		5F3514B1278A4C04003F3097 /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
+				5FB30DCE278B3E5100F34A23 /* FTMainScreenViewController.swift */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -261,6 +314,7 @@
 		5F3514B2278A4C15003F3097 /* BlogScreen */ = {
 			isa = PBXGroup;
 			children = (
+				5FB30DD0278B3E6400F34A23 /* FTBlogScreenViewController.swift */,
 			);
 			path = BlogScreen;
 			sourceTree = "<group>";
@@ -268,6 +322,7 @@
 		5F3514B3278A4C43003F3097 /* EventsScreen */ = {
 			isa = PBXGroup;
 			children = (
+				5FB30DD2278B3E7800F34A23 /* FTEventsScreenViewController.swift */,
 			);
 			path = EventsScreen;
 			sourceTree = "<group>";
@@ -275,6 +330,7 @@
 		5F3514B4278A4C74003F3097 /* ProfileScreen */ = {
 			isa = PBXGroup;
 			children = (
+				5FB30DD4278B3E8800F34A23 /* FTProfileScreenViewController.swift */,
 			);
 			path = ProfileScreen;
 			sourceTree = "<group>";
@@ -282,8 +338,32 @@
 		5F3514B5278A4C8D003F3097 /* ExtrasScreen */ = {
 			isa = PBXGroup;
 			children = (
+				5FB30DD6278B3EA000F34A23 /* FTExtrasScreenViewController.swift */,
 			);
 			path = ExtrasScreen;
+			sourceTree = "<group>";
+		};
+		A100763E4D07D08FF60722B4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BC2AD81E123858A1FFE0DA7B /* Pods_Futag.framework */,
+				98795C780D233C410DE60FEE /* Pods_Futag_FutagUITests.framework */,
+				2FBC8B7BB09E177E9E31C869 /* Pods_FutagTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F7FB5195F1ED73FD59F00E2D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2E110ACB0ADDFCFCD7487D44 /* Pods-Futag.debug.xcconfig */,
+				B0077AB51BEE73B5D173E4AE /* Pods-Futag.release.xcconfig */,
+				0282D37B4DD0C9683E0CFA4A /* Pods-Futag-FutagUITests.debug.xcconfig */,
+				206DDBF340EA03EA74451197 /* Pods-Futag-FutagUITests.release.xcconfig */,
+				2204E092627F51072D5FBCFE /* Pods-FutagTests.debug.xcconfig */,
+				7011205713D8741BB6DBC46C /* Pods-FutagTests.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,9 +373,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5F351494278A4A5F003F3097 /* Build configuration list for PBXNativeTarget "Futag" */;
 			buildPhases = (
+				B4DAEA30868DEF0066A638CA /* [CP] Check Pods Manifest.lock */,
 				5F351466278A4A5D003F3097 /* Sources */,
 				5F351467278A4A5D003F3097 /* Frameworks */,
 				5F351468278A4A5D003F3097 /* Resources */,
+				7AB724B8DC4F5DA0A15A08A9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -312,6 +394,8 @@
 				5FC34070278AE431006CA4B1 /* Lottie */,
 				5FC34073278AE49E006CA4B1 /* SDWebImage */,
 				5FC34075278AE49E006CA4B1 /* SDWebImageMapKit */,
+				5FB30DD9278B4BB700F34A23 /* Kingfisher */,
+				5F93389427943EC900998668 /* IQKeyboardManagerSwift */,
 			);
 			productName = Futag;
 			productReference = 5F35146A278A4A5D003F3097 /* Futag.app */;
@@ -321,6 +405,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5F351497278A4A5F003F3097 /* Build configuration list for PBXNativeTarget "FutagTests" */;
 			buildPhases = (
+				1EDF60C6AE4E9F565378DCD1 /* [CP] Check Pods Manifest.lock */,
 				5F35147C278A4A5F003F3097 /* Sources */,
 				5F35147D278A4A5F003F3097 /* Frameworks */,
 				5F35147E278A4A5F003F3097 /* Resources */,
@@ -339,9 +424,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5F35149A278A4A5F003F3097 /* Build configuration list for PBXNativeTarget "FutagUITests" */;
 			buildPhases = (
+				6C1B4BEA19C16E676C3599B4 /* [CP] Check Pods Manifest.lock */,
 				5F351487278A4A5F003F3097 /* Sources */,
 				5F351488278A4A5F003F3097 /* Frameworks */,
 				5F351489278A4A5F003F3097 /* Resources */,
+				A8165E5C8E4EB9CDD56FCC70 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -388,6 +475,8 @@
 				5FC34062278AE13B006CA4B1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				5FC3406F278AE431006CA4B1 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				5FC34072278AE49E006CA4B1 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				5FB30DD8278B4BB700F34A23 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				5F93389327943EC800998668 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 5F35146B278A4A5D003F3097 /* Products */;
 			projectDirPath = "";
@@ -431,22 +520,137 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1EDF60C6AE4E9F565378DCD1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FutagTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6C1B4BEA19C16E676C3599B4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Futag-FutagUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7AB724B8DC4F5DA0A15A08A9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Futag/Pods-Futag-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Futag/Pods-Futag-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Futag/Pods-Futag-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A8165E5C8E4EB9CDD56FCC70 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Futag-FutagUITests/Pods-Futag-FutagUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Futag-FutagUITests/Pods-Futag-FutagUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Futag-FutagUITests/Pods-Futag-FutagUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B4DAEA30868DEF0066A638CA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Futag-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5F351466278A4A5D003F3097 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FB30DD1278B3E6400F34A23 /* FTBlogScreenViewController.swift in Sources */,
+				5FB30DC9278B178800F34A23 /* BlackBoard.swift in Sources */,
+				5FB30DD5278B3E8800F34A23 /* FTProfileScreenViewController.swift in Sources */,
 				5FC34078278AE764006CA4B1 /* FTOnBoardingScreen1ViewController.swift in Sources */,
+				5FB5194E27A192CC00D58F6D /* AuthenticationViewModel.swift in Sources */,
+				5FB30DCB278B2B8A00F34A23 /* FTRegisterOrLoginScreenViewController.swift in Sources */,
 				5F3514AB278A4B59003F3097 /* UserService.swift in Sources */,
 				5F351472278A4A5D003F3097 /* ViewController.swift in Sources */,
+				5FB30DD3278B3E7800F34A23 /* FTEventsScreenViewController.swift in Sources */,
 				5F35146E278A4A5D003F3097 /* AppDelegate.swift in Sources */,
 				5FC3407A278AE770006CA4B1 /* FTOnBoardingScreen2ViewController.swift in Sources */,
 				5F351470278A4A5D003F3097 /* SceneDelegate.swift in Sources */,
+				5F3F3385278B793B002AD9EB /* FTRegisterViewController.swift in Sources */,
+				5FB5195027A1989500D58F6D /* ImageUploader.swift in Sources */,
 				5F3514A7278A4B38003F3097 /* Utilities.swift in Sources */,
+				5FB30DCD278B3DA600F34A23 /* FTMainTabBarControllerViewController.swift in Sources */,
 				5F3514A5278A4B2E003F3097 /* Extensions.swift in Sources */,
+				5FB30DCF278B3E5100F34A23 /* FTMainScreenViewController.swift in Sources */,
+				5FB30DD7278B3EA000F34A23 /* FTExtrasScreenViewController.swift in Sources */,
 				5FC3407C278AE783006CA4B1 /* FTOnBoardingScreen3ViewController.swift in Sources */,
 				5F3514A9278A4B44003F3097 /* Constants.swift in Sources */,
 				5F3514AD278A4B63003F3097 /* AuthService.swift in Sources */,
+				5F93388F27942CF200998668 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -619,13 +823,14 @@
 		};
 		5F351495278A4A5F003F3097 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E110ACB0ADDFCFCD7487D44 /* Pods-Futag.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PJ76Y6C4AM;
 				INFOPLIST_FILE = Futag/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -639,13 +844,14 @@
 		};
 		5F351496278A4A5F003F3097 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0077AB51BEE73B5D173E4AE /* Pods-Futag.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PJ76Y6C4AM;
 				INFOPLIST_FILE = Futag/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -659,6 +865,7 @@
 		};
 		5F351498278A4A5F003F3097 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2204E092627F51072D5FBCFE /* Pods-FutagTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -681,6 +888,7 @@
 		};
 		5F351499278A4A5F003F3097 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7011205713D8741BB6DBC46C /* Pods-FutagTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -703,6 +911,7 @@
 		};
 		5F35149B278A4A5F003F3097 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0282D37B4DD0C9683E0CFA4A /* Pods-Futag-FutagUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -723,6 +932,7 @@
 		};
 		5F35149C278A4A5F003F3097 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 206DDBF340EA03EA74451197 /* Pods-Futag-FutagUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -783,6 +993,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5F93389327943EC800998668 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.9;
+			};
+		};
+		5FB30DD8278B4BB700F34A23 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.1.2;
+			};
+		};
 		5FC34062278AE13B006CA4B1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -810,6 +1036,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5F93389427943EC900998668 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5F93389327943EC800998668 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+		5FB30DD9278B4BB700F34A23 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5FB30DD8278B4BB700F34A23 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		5FC34063278AE13B006CA4B1 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5FC34062278AE13B006CA4B1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
