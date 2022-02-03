@@ -8,6 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		38F8EE94C1D685739886AB98 /* Pods_FutagTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FBC8B7BB09E177E9E31C869 /* Pods_FutagTests.framework */; };
+		5F305EAD27AA90F2005A2CA5 /* FTCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F305EAC27AA90F2005A2CA5 /* FTCollectionViewLayout.swift */; };
+		5F305EAF27AA9160005A2CA5 /* FTMainScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F305EAE27AA9160005A2CA5 /* FTMainScreenCell.swift */; };
+		5F305EB127AA9FC4005A2CA5 /* FTBlogScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F305EB027AA9FC4005A2CA5 /* FTBlogScreenCell.swift */; };
+		5F305EB327AAA272005A2CA5 /* FTEventScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F305EB227AAA272005A2CA5 /* FTEventScreenCell.swift */; };
+		5F305EB527AAB3F2005A2CA5 /* FTSetProfileInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F305EB427AAB3F2005A2CA5 /* FTSetProfileInfoViewController.swift */; };
+		5F305EB727AABAFB005A2CA5 /* FTSetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F305EB627AABAFB005A2CA5 /* FTSetPasswordViewController.swift */; };
+		5F305EB927AAC193005A2CA5 /* FTExtrasScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F305EB827AAC193005A2CA5 /* FTExtrasScreenCell.swift */; };
+		5F305EBB27AAD5DA005A2CA5 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F305EBA27AAD5DA005A2CA5 /* DataService.swift */; };
+		5F305EBD27AAFC0F005A2CA5 /* FTBlogTextScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F305EBC27AAFC0F005A2CA5 /* FTBlogTextScreenViewController.swift */; };
+		5F305EC027AB1123005A2CA5 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 5F305EBF27AB1123005A2CA5 /* SwiftSoup */; };
+		5F305EC227AB1DA5005A2CA5 /* FTEventsTextScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F305EC127AB1DA5005A2CA5 /* FTEventsTextScreenViewController.swift */; };
+		5F305EC427AB2204005A2CA5 /* FTMainScreenTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F305EC327AB2204005A2CA5 /* FTMainScreenTextViewController.swift */; };
 		5F35146E278A4A5D003F3097 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F35146D278A4A5D003F3097 /* AppDelegate.swift */; };
 		5F351470278A4A5D003F3097 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F35146F278A4A5D003F3097 /* SceneDelegate.swift */; };
 		5F351472278A4A5D003F3097 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F351471278A4A5D003F3097 /* ViewController.swift */; };
@@ -78,6 +90,17 @@
 		2204E092627F51072D5FBCFE /* Pods-FutagTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FutagTests.debug.xcconfig"; path = "Target Support Files/Pods-FutagTests/Pods-FutagTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2E110ACB0ADDFCFCD7487D44 /* Pods-Futag.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Futag.debug.xcconfig"; path = "Target Support Files/Pods-Futag/Pods-Futag.debug.xcconfig"; sourceTree = "<group>"; };
 		2FBC8B7BB09E177E9E31C869 /* Pods_FutagTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FutagTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F305EAC27AA90F2005A2CA5 /* FTCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTCollectionViewLayout.swift; sourceTree = "<group>"; };
+		5F305EAE27AA9160005A2CA5 /* FTMainScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTMainScreenCell.swift; sourceTree = "<group>"; };
+		5F305EB027AA9FC4005A2CA5 /* FTBlogScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTBlogScreenCell.swift; sourceTree = "<group>"; };
+		5F305EB227AAA272005A2CA5 /* FTEventScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTEventScreenCell.swift; sourceTree = "<group>"; };
+		5F305EB427AAB3F2005A2CA5 /* FTSetProfileInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSetProfileInfoViewController.swift; sourceTree = "<group>"; };
+		5F305EB627AABAFB005A2CA5 /* FTSetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSetPasswordViewController.swift; sourceTree = "<group>"; };
+		5F305EB827AAC193005A2CA5 /* FTExtrasScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTExtrasScreenCell.swift; sourceTree = "<group>"; };
+		5F305EBA27AAD5DA005A2CA5 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		5F305EBC27AAFC0F005A2CA5 /* FTBlogTextScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTBlogTextScreenViewController.swift; sourceTree = "<group>"; };
+		5F305EC127AB1DA5005A2CA5 /* FTEventsTextScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTEventsTextScreenViewController.swift; sourceTree = "<group>"; };
+		5F305EC327AB2204005A2CA5 /* FTMainScreenTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTMainScreenTextViewController.swift; sourceTree = "<group>"; };
 		5F35146A278A4A5D003F3097 /* Futag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Futag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F35146D278A4A5D003F3097 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F35146F278A4A5D003F3097 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +159,7 @@
 				5FC3406A278AE13B006CA4B1 /* FirebaseStorage in Frameworks */,
 				5FC3406C278AE13B006CA4B1 /* FirebaseCrashlytics in Frameworks */,
 				5FC34064278AE13B006CA4B1 /* FirebaseFirestore in Frameworks */,
+				5F305EC027AB1123005A2CA5 /* SwiftSoup in Frameworks */,
 				5FB30DDA278B4BB700F34A23 /* Kingfisher in Frameworks */,
 				5FC34068278AE13B006CA4B1 /* FirebaseAnalytics in Frameworks */,
 				C9592934B2DE0BCAD3570191 /* Pods_Futag.framework in Frameworks */,
@@ -229,6 +253,7 @@
 				5F3514A6278A4B38003F3097 /* Utilities.swift */,
 				5F3514A8278A4B44003F3097 /* Constants.swift */,
 				5FB30DC8278B178800F34A23 /* BlackBoard.swift */,
+				5F305EAC27AA90F2005A2CA5 /* FTCollectionViewLayout.swift */,
 				5FC3407D278AE828006CA4B1 /* blog.json */,
 				5FC3407E278AE828006CA4B1 /* giris.json */,
 				5FC3407F278AE828006CA4B1 /* takım.json */,
@@ -242,6 +267,7 @@
 				5F3514AA278A4B59003F3097 /* UserService.swift */,
 				5F3514AC278A4B63003F3097 /* AuthService.swift */,
 				5FB5194F27A1989500D58F6D /* ImageUploader.swift */,
+				5F305EBA27AAD5DA005A2CA5 /* DataService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -307,6 +333,8 @@
 			isa = PBXGroup;
 			children = (
 				5FB30DCE278B3E5100F34A23 /* FTMainScreenViewController.swift */,
+				5F305EAE27AA9160005A2CA5 /* FTMainScreenCell.swift */,
+				5F305EC327AB2204005A2CA5 /* FTMainScreenTextViewController.swift */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -315,6 +343,8 @@
 			isa = PBXGroup;
 			children = (
 				5FB30DD0278B3E6400F34A23 /* FTBlogScreenViewController.swift */,
+				5F305EB027AA9FC4005A2CA5 /* FTBlogScreenCell.swift */,
+				5F305EBC27AAFC0F005A2CA5 /* FTBlogTextScreenViewController.swift */,
 			);
 			path = BlogScreen;
 			sourceTree = "<group>";
@@ -323,6 +353,8 @@
 			isa = PBXGroup;
 			children = (
 				5FB30DD2278B3E7800F34A23 /* FTEventsScreenViewController.swift */,
+				5F305EB227AAA272005A2CA5 /* FTEventScreenCell.swift */,
+				5F305EC127AB1DA5005A2CA5 /* FTEventsTextScreenViewController.swift */,
 			);
 			path = EventsScreen;
 			sourceTree = "<group>";
@@ -331,6 +363,8 @@
 			isa = PBXGroup;
 			children = (
 				5FB30DD4278B3E8800F34A23 /* FTProfileScreenViewController.swift */,
+				5F305EB427AAB3F2005A2CA5 /* FTSetProfileInfoViewController.swift */,
+				5F305EB627AABAFB005A2CA5 /* FTSetPasswordViewController.swift */,
 			);
 			path = ProfileScreen;
 			sourceTree = "<group>";
@@ -339,6 +373,7 @@
 			isa = PBXGroup;
 			children = (
 				5FB30DD6278B3EA000F34A23 /* FTExtrasScreenViewController.swift */,
+				5F305EB827AAC193005A2CA5 /* FTExtrasScreenCell.swift */,
 			);
 			path = ExtrasScreen;
 			sourceTree = "<group>";
@@ -396,6 +431,7 @@
 				5FC34075278AE49E006CA4B1 /* SDWebImageMapKit */,
 				5FB30DD9278B4BB700F34A23 /* Kingfisher */,
 				5F93389427943EC900998668 /* IQKeyboardManagerSwift */,
+				5F305EBF27AB1123005A2CA5 /* SwiftSoup */,
 			);
 			productName = Futag;
 			productReference = 5F35146A278A4A5D003F3097 /* Futag.app */;
@@ -477,6 +513,7 @@
 				5FC34072278AE49E006CA4B1 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				5FB30DD8278B4BB700F34A23 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				5F93389327943EC800998668 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				5F305EBE27AB1122005A2CA5 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 			);
 			productRefGroup = 5F35146B278A4A5D003F3097 /* Products */;
 			projectDirPath = "";
@@ -629,28 +666,39 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FB30DD1278B3E6400F34A23 /* FTBlogScreenViewController.swift in Sources */,
+				5F305EB527AAB3F2005A2CA5 /* FTSetProfileInfoViewController.swift in Sources */,
 				5FB30DC9278B178800F34A23 /* BlackBoard.swift in Sources */,
 				5FB30DD5278B3E8800F34A23 /* FTProfileScreenViewController.swift in Sources */,
 				5FC34078278AE764006CA4B1 /* FTOnBoardingScreen1ViewController.swift in Sources */,
 				5FB5194E27A192CC00D58F6D /* AuthenticationViewModel.swift in Sources */,
 				5FB30DCB278B2B8A00F34A23 /* FTRegisterOrLoginScreenViewController.swift in Sources */,
+				5F305EBB27AAD5DA005A2CA5 /* DataService.swift in Sources */,
 				5F3514AB278A4B59003F3097 /* UserService.swift in Sources */,
 				5F351472278A4A5D003F3097 /* ViewController.swift in Sources */,
 				5FB30DD3278B3E7800F34A23 /* FTEventsScreenViewController.swift in Sources */,
 				5F35146E278A4A5D003F3097 /* AppDelegate.swift in Sources */,
 				5FC3407A278AE770006CA4B1 /* FTOnBoardingScreen2ViewController.swift in Sources */,
+				5F305EB327AAA272005A2CA5 /* FTEventScreenCell.swift in Sources */,
 				5F351470278A4A5D003F3097 /* SceneDelegate.swift in Sources */,
 				5F3F3385278B793B002AD9EB /* FTRegisterViewController.swift in Sources */,
 				5FB5195027A1989500D58F6D /* ImageUploader.swift in Sources */,
+				5F305EBD27AAFC0F005A2CA5 /* FTBlogTextScreenViewController.swift in Sources */,
+				5F305EC427AB2204005A2CA5 /* FTMainScreenTextViewController.swift in Sources */,
 				5F3514A7278A4B38003F3097 /* Utilities.swift in Sources */,
 				5FB30DCD278B3DA600F34A23 /* FTMainTabBarControllerViewController.swift in Sources */,
 				5F3514A5278A4B2E003F3097 /* Extensions.swift in Sources */,
 				5FB30DCF278B3E5100F34A23 /* FTMainScreenViewController.swift in Sources */,
 				5FB30DD7278B3EA000F34A23 /* FTExtrasScreenViewController.swift in Sources */,
+				5F305EB127AA9FC4005A2CA5 /* FTBlogScreenCell.swift in Sources */,
 				5FC3407C278AE783006CA4B1 /* FTOnBoardingScreen3ViewController.swift in Sources */,
 				5F3514A9278A4B44003F3097 /* Constants.swift in Sources */,
+				5F305EB927AAC193005A2CA5 /* FTExtrasScreenCell.swift in Sources */,
+				5F305EAF27AA9160005A2CA5 /* FTMainScreenCell.swift in Sources */,
 				5F3514AD278A4B63003F3097 /* AuthService.swift in Sources */,
+				5F305EAD27AA90F2005A2CA5 /* FTCollectionViewLayout.swift in Sources */,
 				5F93388F27942CF200998668 /* User.swift in Sources */,
+				5F305EB727AABAFB005A2CA5 /* FTSetPasswordViewController.swift in Sources */,
+				5F305EC227AB1DA5005A2CA5 /* FTEventsTextScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -993,6 +1041,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5F305EBE27AB1122005A2CA5 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.8;
+			};
+		};
 		5F93389327943EC800998668 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
@@ -1036,6 +1092,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5F305EBF27AB1123005A2CA5 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5F305EBE27AB1122005A2CA5 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
 		5F93389427943EC900998668 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5F93389327943EC800998668 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;

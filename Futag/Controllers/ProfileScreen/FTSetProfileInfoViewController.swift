@@ -1,13 +1,13 @@
 //
-//  FTProfileScreenViewController.swift
+//  FTSetProfileInfoViewController.swift
 //  Futag
 //
-//  Created by Furkan Erdoğan on 9.01.2022.
+//  Created by Furkan Erdoğan on 2.02.2022.
 //
 
 import UIKit
 
-class FTProfileScreenViewController: UIViewController {
+class FTSetProfileInfoViewController: UIViewController {
 
     //MARK: - Properties
     
@@ -58,17 +58,27 @@ class FTProfileScreenViewController: UIViewController {
         return label
     }()
     
-    private lazy var emailContainerView: UIView = {
-        let image = UIImage(systemName: "envelope.fill")
-        let view = Utilities().inputContainerView(withImage: image!, textField: emailTextField)
+    private lazy var nameContainerView: UIView = {
+        let image = UIImage(systemName: "person.fill")
+        let view = Utilities().inputContainerView(withImage: image!, textField: nameTextField)
         return view
     }()
     
-    private let emailTextField: UITextField = {
-        let tf = Utilities().textField(withPlaceholder: "Mailiniz")
-        tf.text = "denemedeneme@gmail.com"
-        tf.keyboardType = .emailAddress
-        tf.isUserInteractionEnabled = false
+    private let nameTextField: UITextField = {
+        let tf = Utilities().textField(withPlaceholder: "Adınız")
+        tf.text = "Kamil"
+        return tf
+    }()
+    
+    private lazy var surnameameContainerView: UIView = {
+        let image = UIImage(systemName: "person.fill")
+        let view = Utilities().inputContainerView(withImage: image!, textField: surnameTextField)
+        return view
+    }()
+    
+    private let surnameTextField: UITextField = {
+        let tf = Utilities().textField(withPlaceholder: "Soyadınız")
+        tf.text = "Çömlekçi"
         return tf
     }()
     
@@ -87,22 +97,37 @@ class FTProfileScreenViewController: UIViewController {
     
     private lazy var editProfileButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Profili Düzenle", for: .normal)
+        button.setTitle("Değişiklikleri Kaydet", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         button.backgroundColor = .clubYellow
         button.layer.cornerRadius = 20
         button.setDimensions(width: 100, height: 50)
         
-        button.addTarget(self, action: #selector(setProfileInfoTapped), for: .touchUpInside)
+//        button.addTarget(self, action: #selector(registerButtonPressed), for: .touchUpInside)
 
         
         return button
     }()
     
-    private lazy var signOutButton: UIButton = {
+    private lazy var setPasswordButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Çıkış Yap", for: .normal)
+        button.setTitle("Şifreyi Değiştir", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        button.backgroundColor = .clubYellow
+        button.layer.cornerRadius = 20
+        button.setDimensions(width: 100, height: 50)
+        
+        button.addTarget(self, action: #selector(setPasswordButtonPressed), for: .touchUpInside)
+
+        
+        return button
+    }()
+    
+    private lazy var deleteAccountButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Hesabımı Sil", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         button.backgroundColor = .clubYellow
@@ -133,8 +158,8 @@ class FTProfileScreenViewController: UIViewController {
     
     //MARK: - Selector
     
-    @objc func setProfileInfoTapped() {
-        let vc = FTSetProfileInfoViewController()
+    @objc func setPasswordButtonPressed() {
+        let vc = FTSetPasswordViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -145,7 +170,7 @@ class FTProfileScreenViewController: UIViewController {
     func configureUI() {
         
         view.backgroundColor = .white
-        self.title = "Profil"
+        self.title = "Profili Düzenle"
         navigationController?.navigationBar.prefersLargeTitles = true
         
         view.addSubview(scroolView)
@@ -157,23 +182,25 @@ class FTProfileScreenViewController: UIViewController {
         scrollSubView.addSubview(profileImageView)
         profileImageView.centerX(inView: scrollSubView, topAnchor: scrollSubView.safeAreaLayoutGuide.topAnchor)
         
-        scrollSubView.addSubview(nameLabel)
-        nameLabel.centerX(inView: scrollSubView, topAnchor: profileImageView.bottomAnchor, paddingTop: 20)
         
-        let tfStack = UIStackView(arrangedSubviews: [ emailContainerView,  birhdayContainerView])
+        let tfStack = UIStackView(arrangedSubviews: [ nameContainerView, surnameameContainerView,  birhdayContainerView])
         tfStack.axis = .vertical
         tfStack.spacing  = 15
         tfStack.distribution = .fillEqually
         
         scrollSubView.addSubview(tfStack)
-        tfStack.anchor(top: nameLabel.bottomAnchor, left: scrollSubView.leftAnchor, right: scrollSubView.rightAnchor, paddingTop: 50, paddingLeft: 10, paddingRight: 10)
+        tfStack.anchor(top: profileImageView.bottomAnchor, left: scrollSubView.leftAnchor, right: scrollSubView.rightAnchor, paddingTop: 40, paddingLeft: 10, paddingRight: 10)
         
         
         scrollSubView.addSubview(editProfileButton)
         editProfileButton.anchor(top: tfStack.bottomAnchor, left: scrollSubView.leftAnchor, right: scrollSubView.rightAnchor, paddingTop: 60, paddingLeft: 10, paddingRight: 10, height: 120)
         
-        scrollSubView.addSubview(signOutButton)
-        signOutButton.anchor(top: editProfileButton.bottomAnchor, left: scrollSubView.leftAnchor, bottom: scrollSubView.bottomAnchor, right: scrollSubView.rightAnchor, paddingTop: 20, paddingLeft: 10, paddingBottom: 60, paddingRight: 10, height: 120)
+        scrollSubView.addSubview(setPasswordButton)
+        setPasswordButton.anchor(top: editProfileButton.bottomAnchor, left: scrollSubView.leftAnchor, right: scrollSubView.rightAnchor, paddingTop: 20, paddingLeft: 10, paddingRight: 10, height: 120)
+        
+        
+        scrollSubView.addSubview(deleteAccountButton)
+        deleteAccountButton.anchor(top: setPasswordButton.bottomAnchor, left: scrollSubView.leftAnchor, bottom: scrollSubView.bottomAnchor, right: scrollSubView.rightAnchor, paddingTop: 20, paddingLeft: 10, paddingBottom: 60, paddingRight: 10, height: 120)
         
         
         

@@ -115,7 +115,7 @@ class FTRegisterViewController: UIViewController {
     }()
     
     private lazy var passwordAgainContainerView: UIView = {
-        let image = UIImage(systemName: "key.fill")
+        let image = UIImage(systemName: "lock.fill")
         let view = Utilities().inputContainerView(withImage: image!, textField: passWordAgainTextField)
         return view
     }()

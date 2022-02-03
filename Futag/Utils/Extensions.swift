@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 extension UIView {
     func anchor(top: NSLayoutYAxisAnchor? = nil,
@@ -111,5 +112,90 @@ extension UITextField {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
         self.rightView = paddingView
         self.rightViewMode = .always
+    }
+}
+
+extension UIView {
+   func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        layer.mask = mask
+    }
+}
+
+extension UIImageView {
+    func setImage(with urlString: String){
+        guard let url = URL.init(string: urlString) else {
+            return
+        }
+        let resource = ImageResource(downloadURL: url, cacheKey: urlString)
+        var kf = self.kf
+        kf.indicatorType = .activity
+        self.kf.setImage(with: resource)
+    }
+}
+
+extension UIView {
+
+  func addShadow(shadowColor: UIColor, offSet: CGSize, opacity: Float, shadowRadius:
+  CGFloat, cornerRadius: CGFloat, corners: UIRectCorner, fillColor: UIColor = .white) {
+
+    let shadowLayer = CAShapeLayer()
+    let size = CGSize(width: cornerRadius, height: cornerRadius)
+    let cgPath = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: size).cgPath //1
+    shadowLayer.path = cgPath //2
+    shadowLayer.fillColor = fillColor.cgColor //3
+    shadowLayer.shadowColor = shadowColor.cgColor //4
+    shadowLayer.shadowPath = cgPath
+    shadowLayer.shadowOffset = offSet //5
+    shadowLayer.shadowOpacity = opacity
+    shadowLayer.shadowRadius = shadowRadius
+    self.layer.addSublayer(shadowLayer)
+  }
+}
+
+extension String {
+    func htmlAttributedString() -> NSMutableAttributedString {
+
+            guard let data = self.data(using: String.Encoding.utf8, allowLossyConversion: false)
+                else { return NSMutableAttributedString() }
+
+            guard let formattedString = try? NSMutableAttributedString(data: data,
+                                                            options: [.documentType: NSAttributedString.DocumentType.html,
+                                                                      .characterEncoding: String.Encoding.utf8.rawValue],
+                                                            documentAttributes: nil )
+
+                else { return NSMutableAttributedString() }
+
+            return formattedString
+    }
+
+}
+
+
+extension NSMutableAttributedString {
+
+    func with(font: UIFont) -> NSMutableAttributedString {
+        self.enumerateAttribute(NSAttributedString.Key.font, in: NSMakeRange(0, self.length), options: .longestEffectiveRangeNotRequired, using: { (value, range, stop) in
+            let originalFont = value as! UIFont
+            if let newFont = applyTraitsFromFont(originalFont, to: font) {
+                self.addAttribute(NSAttributedString.Key.font, value: newFont, range: range)
+            }
+        })
+        return self
+    }
+
+    func applyTraitsFromFont(_ f1: UIFont, to f2: UIFont) -> UIFont? {
+        let originalTrait = f1.fontDescriptor.symbolicTraits
+
+        if originalTrait.contains(.traitBold) {
+            var traits = f2.fontDescriptor.symbolicTraits
+            traits.insert(.traitBold)
+            if let fd = f2.fontDescriptor.withSymbolicTraits(traits) {
+                return UIFont.init(descriptor: fd, size: 0)
+            }
+        }
+        return f2
     }
 }

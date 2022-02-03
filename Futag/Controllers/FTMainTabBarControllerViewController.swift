@@ -25,6 +25,7 @@ class FTMainTabBarControllerViewController: UITabBarController {
 //        authenticateUserAndConfigureUI()
         
         configureViewControllers()
+        UITabBar.appearance().tintColor = .clubYellow
     }
     
     // MARK: - API
@@ -50,7 +51,7 @@ class FTMainTabBarControllerViewController: UITabBarController {
     func configureViewControllers() {
         
         let blog = FTBlogScreenViewController()
-        let nav1 = templateNavigationController(image: UIImage(systemName: "newspaper"), title: "Blog", rootViewController: blog)
+        let nav1 = templateNavigationController(image: UIImage(systemName: "newspaper.fill"), title: "Blog", rootViewController: blog)
         
         let events = FTEventsScreenViewController()
         let nav2 = templateNavigationController(image: UIImage(systemName: "calendar.badge.clock"), title: "Etkinlikler", rootViewController: events)
