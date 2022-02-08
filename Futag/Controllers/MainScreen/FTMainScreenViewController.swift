@@ -49,6 +49,7 @@ class FTMainScreenViewController: UIViewController {
     
     private var headerImagemageSlide: ImageSlideshow = {
         let slide = ImageSlideshow()
+        slide.backgroundColor = .systemBackground
         
         
         return slide
@@ -65,7 +66,6 @@ class FTMainScreenViewController: UIViewController {
     
     private lazy var collectionView: UICollectionView = {
         let coll = UICollectionView(frame: .zero, collectionViewLayout: CommentFlowLayout())
-        coll.backgroundColor = .white
         coll.translatesAutoresizingMaskIntoConstraints = false
         
         
@@ -84,6 +84,20 @@ class FTMainScreenViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
+        switch traitCollection.userInterfaceStyle {
+        case .dark:
+            print("Dark")
+            
+            
+        case .light:
+            view.backgroundColor = .white
+        default:
+            print("something else")
+        }
+        
+        
+        
+        
         fetchData()
         fetchPostData()
         self.configureUI()
@@ -97,7 +111,9 @@ class FTMainScreenViewController: UIViewController {
         collectionView.contentInsetAdjustmentBehavior = .always
         
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 0)
+        
     }
+    
     
     //MARK: - API
     
@@ -129,7 +145,6 @@ class FTMainScreenViewController: UIViewController {
     
     func configureUI() {
         
-        view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
         
         

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "girişimcilik.png",
+      "filename" : "dış@1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "girişimcilik@2x.png",
+      "filename" : "dış@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "girişimcilik@3x.png",
+      "filename" : "dış@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

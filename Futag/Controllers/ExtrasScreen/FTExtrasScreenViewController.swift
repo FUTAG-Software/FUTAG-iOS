@@ -27,7 +27,7 @@ class FTExtrasScreenViewController: UIViewController {
     
     private lazy var collectionView: UICollectionView = {
         let coll = UICollectionView(frame: .zero, collectionViewLayout: CommentFlowLayout())
-        coll.backgroundColor = .white
+        coll.backgroundColor = .systemBackground
         coll.translatesAutoresizingMaskIntoConstraints = false
         
         
@@ -42,7 +42,6 @@ class FTExtrasScreenViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        view.backgroundColor = .white
         getData()
         configureUI()
         
@@ -72,7 +71,9 @@ class FTExtrasScreenViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         
         view.addSubview(collectionView)
-        collectionView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
+        collectionView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
+        
+        
         
     }
     
@@ -110,6 +111,12 @@ extension FTExtrasScreenViewController: UICollectionViewDelegate, UICollectionVi
         
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let vc = FTDepartmentsScreenViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     

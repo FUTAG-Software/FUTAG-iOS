@@ -21,11 +21,14 @@ class FTMainTabBarControllerViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
 //        authenticateUserAndConfigureUI()
+        configureUI()
         
         configureViewControllers()
         UITabBar.appearance().tintColor = .clubYellow
+        
+        
+        
     }
     
     // MARK: - API
@@ -45,6 +48,20 @@ class FTMainTabBarControllerViewController: UITabBarController {
     
     func configureUI() {
         self.delegate = self
+        tabBar.isTranslucent = false
+        
+        switch traitCollection.userInterfaceStyle {
+        case .dark:
+            print("Dark")
+            tabBar.backgroundColor = .black
+            
+        case .light:
+            print("Light")
+            tabBar.backgroundColor = .white
+        default:
+            print("something else")
+        }
+        
         
     }
     
@@ -69,10 +86,9 @@ class FTMainTabBarControllerViewController: UITabBarController {
     }
     
     func templateNavigationController(image: UIImage?, title: String, rootViewController: UIViewController) -> UINavigationController {
-        let nav = UINavigationController(rootViewController: rootViewController)
+        let nav = DarkModeAwareNavigationController(rootViewController: rootViewController)
         nav.tabBarItem.image = image
         nav.tabBarItem.title = title
-        nav.navigationBar.barTintColor = .white
         return nav
     }
 }
@@ -81,4 +97,28 @@ extension FTMainTabBarControllerViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         
     }
+}
+
+class DarkModeAwareNavigationController: UINavigationController {
+
+  override init(rootViewController: UIViewController) {
+       super.init(rootViewController: rootViewController)
+       self.updateBarTintColor()
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+       super.init(coder: aDecoder)
+       self.updateBarTintColor()
+  }
+
+  override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+       super.traitCollectionDidChange(previousTraitCollection)
+       self.updateBarTintColor()
+  }
+
+  private func updateBarTintColor() {
+       if #available(iOS 13.0, *) {
+            self.navigationBar.barTintColor = UITraitCollection.current.userInterfaceStyle == .dark ? .black : .white
+  }
+  }
 }

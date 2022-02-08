@@ -22,7 +22,7 @@ class FTBlogTextScreenViewController: UIViewController {
     
     private lazy var scroolView: UIScrollView = {
         let sc = UIScrollView(frame: .zero)
-        sc.backgroundColor = .white
+        sc.backgroundColor = .systemBackground
         sc.contentSize.width = self.view.frame.width
         sc.frame = self.view.bounds
         sc.autoresizingMask = .flexibleHeight
@@ -34,7 +34,7 @@ class FTBlogTextScreenViewController: UIViewController {
     
     private lazy var scrollSubView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         
         
         return view
@@ -63,13 +63,22 @@ class FTBlogTextScreenViewController: UIViewController {
     
     private lazy var contentTextView: UILabel = {
        let label = UILabel()
-       label.textColor = .black
+       label.textColor = .white
        label.text = selectedContent
        label.numberOfLines = .max
         
         let formattedString = selectedContent!
                                 .htmlAttributedString()
             .with(font:UIFont.systemFont(ofSize: 16, weight: .semibold))
+        
+        let attributes: [NSAttributedString.Key: AnyObject] =
+                          [NSAttributedString.Key.foregroundColor: UIColor.label]
+        
+        formattedString.addAttributes(attributes,
+                                      range: NSRange.init(location: 0, length: formattedString.length ))
+        
+        
+        
         
         label.attributedText = formattedString
        
@@ -86,7 +95,6 @@ class FTBlogTextScreenViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        view.backgroundColor = .white
         configureUI()
     }
     
@@ -100,9 +108,6 @@ class FTBlogTextScreenViewController: UIViewController {
     //MARK: - Helper
     
     func configureUI() {
-        
-        
-        
         
         
         self.title = selectedTitle

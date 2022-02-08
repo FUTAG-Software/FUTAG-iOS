@@ -22,7 +22,7 @@ class FTMainScreenTextViewController: UIViewController {
     
     private lazy var scroolView: UIScrollView = {
         let sc = UIScrollView(frame: .zero)
-        sc.backgroundColor = .white
+        sc.backgroundColor = .systemBackground
         sc.contentSize.width = self.view.frame.width
         sc.frame = self.view.bounds
         sc.autoresizingMask = .flexibleHeight
@@ -34,7 +34,7 @@ class FTMainScreenTextViewController: UIViewController {
     
     private lazy var scrollSubView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         
         
         return view
@@ -44,8 +44,7 @@ class FTMainScreenTextViewController: UIViewController {
     
     private lazy var headrImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.setImage(with: selectedImage ?? "")
+        imageView.setDimensions(width: view.frame.size.width, height: 300)
         
         
         return imageView
@@ -63,13 +62,19 @@ class FTMainScreenTextViewController: UIViewController {
     
     private lazy var contentTextView: UILabel = {
        let label = UILabel()
-       label.textColor = .black
+       label.textColor = .label
        label.text = selectedContent
        label.numberOfLines = .max
         
         let formattedString = selectedContent!
                                 .htmlAttributedString()
             .with(font:UIFont.systemFont(ofSize: 16, weight: .semibold))
+        
+        let attributes: [NSAttributedString.Key: AnyObject] =
+                          [NSAttributedString.Key.foregroundColor: UIColor.label]
+        
+        formattedString.addAttributes(attributes,
+                                      range: NSRange.init(location: 0, length: formattedString.length ))
         
         label.attributedText = formattedString
        
@@ -86,8 +91,9 @@ class FTMainScreenTextViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        view.backgroundColor = .white
         configureUI()
+        
+        headrImageView.setImage(with: selectedImage ?? "")
     }
     
     //MARK: - API
@@ -101,24 +107,22 @@ class FTMainScreenTextViewController: UIViewController {
     
     func configureUI() {
         
-        
-        
-        
-        
         self.title = selectedTitle
         navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationBar.isHidden = false
         
-        view.addSubview(headrImageView)
-        headrImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor)
         
         view.addSubview(scroolView)
-        scroolView.anchor(top: headrImageView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0)
+        scroolView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0)
         
         scroolView.addSubview(scrollSubView)
         scrollSubView.anchor(top: scroolView.topAnchor, left: scroolView.leftAnchor, bottom: scroolView.bottomAnchor, width: view.frame.size.width)
         
+        scrollSubView.addSubview(headrImageView)
+        headrImageView.anchor(top: scrollSubView.topAnchor, left: scrollSubView.leftAnchor, right: scrollSubView.rightAnchor)
+        
         scrollSubView.addSubview(authorLabel)
-        authorLabel.anchor(top: scrollSubView.topAnchor, right: scrollSubView.rightAnchor, paddingTop: 15, paddingRight: 15)
+        authorLabel.anchor(top: headrImageView.bottomAnchor, right: scrollSubView.rightAnchor, paddingTop: 15, paddingRight: 15)
         
         scrollSubView.addSubview(contentTextView)
         contentTextView.anchor(top: authorLabel.bottomAnchor, left: scrollSubView.leftAnchor, bottom: scrollSubView.bottomAnchor, right: scrollSubView.rightAnchor, paddingLeft: 10, paddingRight: 10)

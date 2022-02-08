@@ -39,7 +39,6 @@ class FTBlogScreenViewController: UIViewController {
     
     private lazy var collectionView: UICollectionView = {
         let coll = UICollectionView(frame: .zero, collectionViewLayout: CommentFlowLayout())
-        coll.backgroundColor = .white
         coll.translatesAutoresizingMaskIntoConstraints = false
         
         
@@ -54,7 +53,8 @@ class FTBlogScreenViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        view.backgroundColor = .white
+        
+        
         fetchData()
         configureUI()
         
@@ -67,6 +67,8 @@ class FTBlogScreenViewController: UIViewController {
         collectionView.contentInsetAdjustmentBehavior = .always
         
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 0)
+        
+        
     }
     
     //MARK: - API
@@ -89,8 +91,9 @@ class FTBlogScreenViewController: UIViewController {
         self.title = "Blog"
         navigationController?.navigationBar.prefersLargeTitles = true
         
+        
         view.addSubview(collectionView)
-        collectionView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
+        collectionView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
         
     }
 

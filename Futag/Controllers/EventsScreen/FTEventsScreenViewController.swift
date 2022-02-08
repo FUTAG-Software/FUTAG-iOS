@@ -29,7 +29,6 @@ class FTEventsScreenViewController: UIViewController {
     
     private lazy var collectionView: UICollectionView = {
         let coll = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        coll.backgroundColor = .white
         coll.translatesAutoresizingMaskIntoConstraints = false
         
         
@@ -45,7 +44,6 @@ class FTEventsScreenViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        view.backgroundColor = .white
         fetchData()
         configureUI()
         
@@ -83,8 +81,9 @@ class FTEventsScreenViewController: UIViewController {
         self.title = "Etkinlikler"
         navigationController?.navigationBar.prefersLargeTitles = true
         
+        
         view.addSubview(collectionView)
-        collectionView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
+        collectionView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
         
     }
 

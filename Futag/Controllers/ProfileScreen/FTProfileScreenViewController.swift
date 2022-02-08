@@ -13,7 +13,7 @@ class FTProfileScreenViewController: UIViewController {
     
     private lazy var scroolView: UIScrollView = {
         let sc = UIScrollView(frame: .zero)
-        sc.backgroundColor = .white
+        sc.backgroundColor = .systemBackground
         sc.contentSize.width = self.view.frame.width
         sc.frame = self.view.bounds
         sc.autoresizingMask = .flexibleHeight
@@ -25,7 +25,7 @@ class FTProfileScreenViewController: UIViewController {
     
     private lazy var scrollSubView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         
         
         return view
@@ -48,7 +48,7 @@ class FTProfileScreenViewController: UIViewController {
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .label
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.numberOfLines = 3
         label.textAlignment = .center
@@ -123,7 +123,6 @@ class FTProfileScreenViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        view.backgroundColor = .white
         
         configureUI()
     }
@@ -144,7 +143,6 @@ class FTProfileScreenViewController: UIViewController {
     
     func configureUI() {
         
-        view.backgroundColor = .white
         self.title = "Profil"
         navigationController?.navigationBar.prefersLargeTitles = true
         

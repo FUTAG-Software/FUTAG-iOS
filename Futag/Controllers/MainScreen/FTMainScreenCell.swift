@@ -33,7 +33,7 @@ class FTMainScreenCell: UICollectionViewCell {
         
         view.layer.masksToBounds = true
         view.layer.shadowColor = UIColor.black.cgColor
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.systemBackground
         view.layer.cornerRadius = 12
         
         view.layer.borderWidth = 0.5
@@ -59,7 +59,7 @@ class FTMainScreenCell: UICollectionViewCell {
         let view = UIView()
         view.clipsToBounds = true
         //view.backgroundColor = .systemGray6
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         
         return view
     }()
@@ -69,6 +69,7 @@ class FTMainScreenCell: UICollectionViewCell {
         label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         label.text = "YÖNETIM KURULU SEÇIMI GERÇEKLEŞTI ÇOK GÜZEL OLDU"
         label.numberOfLines = .max
+        label.textColor = .label
         
         return label
     }()

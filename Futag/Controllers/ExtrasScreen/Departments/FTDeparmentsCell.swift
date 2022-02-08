@@ -1,19 +1,18 @@
 //
-//  FTExtrasScreenCell.swift
+//  FTDeparmentsCell.swift
 //  Futag
 //
-//  Created by Furkan Erdoğan on 2.02.2022.
+//  Created by Furkan Erdoğan on 8.02.2022.
 //
-
 import Foundation
 import UIKit
 import SDWebImage
 
 
-class FTExtrasScreenCell: UICollectionViewCell {
+class FTDeparmentsCell: UICollectionViewCell {
     
     //MARK: - Properties
-    static let reuseIdentifier = String(describing: FTExtrasScreenCell.self)
+    static let reuseIdentifier = String(describing: FTDeparmentsCell.self)
     
     var container : UIView = {
         let view = UIView()
@@ -39,8 +38,8 @@ class FTExtrasScreenCell: UICollectionViewCell {
         //view.backgroundColor = .systemGray6
         view.layer.masksToBounds = true
         view.backgroundColor = UIColor.tertiarySystemBackground
-        view.setDimensions(width: 60, height: 60)
-        view.layer.cornerRadius = 30
+        view.setDimensions(width: 70, height: 70)
+        view.layer.cornerRadius = 20
         
         
         return view
@@ -48,8 +47,8 @@ class FTExtrasScreenCell: UICollectionViewCell {
     
      let logoImageView: UIImageView = {
         let iv = UIImageView()
-        iv.setDimensions(width: 40, height: 40)
-        iv.image = UIImage(named: "futagLogoSiyah")
+        iv.setDimensions(width: 70, height: 70)
+        iv.image = UIImage(named: "girisimcilik")
         
         
         return iv
@@ -57,7 +56,7 @@ class FTExtrasScreenCell: UICollectionViewCell {
     
      let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+         label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         label.textColor = .label
         label.text = "Birimlerimiz"
         label.numberOfLines = .max
@@ -112,26 +111,24 @@ class FTExtrasScreenCell: UICollectionViewCell {
     func configureUI() {
         
         contentView.addSubview(container)
-        container.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor , right: contentView.rightAnchor, paddingLeft: 10, paddingRight: 10)
+        container.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor , right: contentView.rightAnchor, paddingLeft: 30, paddingRight: 10)
         
-        container.addSubview(container2)
-        container2.centerY(inView: container, leftAnchor: container.leftAnchor, paddingLeft: 20)
+        contentView.addSubview(container2)
+        container2.centerY(inView: container, leftAnchor: container.leftAnchor, paddingLeft: -30)
         
         container2.addSubview(logoImageView)
         logoImageView.center(inView: container2)
         
         
         container.addSubview(titleLabel)
-        titleLabel.centerY(inView: container, leftAnchor: container.leftAnchor, paddingLeft: 100)
+        titleLabel.anchor(top: container.topAnchor, left: container.leftAnchor, bottom: container.bottomAnchor, right: container.rightAnchor, paddingTop: 10, paddingLeft: 60, paddingBottom: 10, paddingRight: 10)
         
-        container.addSubview(forwardImageView)
-        forwardImageView.centerY(inView: container, leftAnchor: container.rightAnchor, paddingLeft: -30)
         
         
     }
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-            let targetSize = CGSize(width: layoutAttributes.frame.width, height: 80)
+            let targetSize = CGSize(width: layoutAttributes.frame.width, height: 90)
         layoutAttributes.frame.size = contentView.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: .required, verticalFittingPriority: .required)
             return layoutAttributes
         }
