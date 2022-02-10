@@ -59,6 +59,18 @@ class FTDepartmentsScreenViewController: UIViewController {
         getData()
         configureUI()
         
+        switch traitCollection.userInterfaceStyle {
+        case .dark:
+            view.backgroundColor = .black
+            
+            
+            
+        case .light:
+            view.backgroundColor = .white
+        default:
+            print("something else")
+        }
+        
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -84,13 +96,12 @@ class FTDepartmentsScreenViewController: UIViewController {
         self.title = "Birimlerimiz"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.isHidden = false
-        view.backgroundColor = .white
         
         
         view.addSubview(leftImageView)
         leftImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor)
         view.addSubview(collectionView)
-        collectionView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingLeft: 20)
+        collectionView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20)
         
         
         
@@ -101,7 +112,7 @@ class FTDepartmentsScreenViewController: UIViewController {
     
     func getData() {
         
-        let externalAffairs = Department(name: "Dış İlişkiler Ve Organizasyon", number: 1, imageName: "", content: "", logoName: "dis")
+        let externalAffairs = Department(name: "Dış İlişkiler Ve Organizasyon", number: 1, imageName: "denemeImage", content: "merhaba benim adım algoritma bir problemin çözüm kümesiimdir. Sonuç dayımdır yanlış yazdım sonlu sayı dayımdır.", logoName: "dis")
         let innovation = Department(name: "Girişimcilik Ve İnovasyon Birimi", number: 2, imageName: "", content: "", logoName: "girisimcilik")
         let media = Department(name: "Medya Ve Tasarım Birimi", number: 2, imageName: "", content: "", logoName: "medya")
         let project = Department(name: "Proje Ve Arge Birimi", number: 1, imageName: "", content: "", logoName: "proje")
@@ -132,6 +143,15 @@ extension FTDepartmentsScreenViewController: UICollectionViewDelegate, UICollect
         
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = FTDepartmentInfoViewController()
+        vc.selectedTitle = departments[indexPath.row].name
+        vc.selectedImage = departments[indexPath.row].imageName
+        vc.selectedContent = departments[indexPath.row].content
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     

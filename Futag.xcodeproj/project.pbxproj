@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		38F8EE94C1D685739886AB98 /* Pods_FutagTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FBC8B7BB09E177E9E31C869 /* Pods_FutagTests.framework */; };
+		5F0DA10C27B51B530030F0B8 /* FTDepartmentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0DA10B27B51B530030F0B8 /* FTDepartmentInfoViewController.swift */; };
 		5F305EAD27AA90F2005A2CA5 /* FTCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F305EAC27AA90F2005A2CA5 /* FTCollectionViewLayout.swift */; };
 		5F305EAF27AA9160005A2CA5 /* FTMainScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F305EAE27AA9160005A2CA5 /* FTMainScreenCell.swift */; };
 		5F305EB127AA9FC4005A2CA5 /* FTBlogScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F305EB027AA9FC4005A2CA5 /* FTBlogScreenCell.swift */; };
@@ -92,6 +93,7 @@
 		2204E092627F51072D5FBCFE /* Pods-FutagTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FutagTests.debug.xcconfig"; path = "Target Support Files/Pods-FutagTests/Pods-FutagTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2E110ACB0ADDFCFCD7487D44 /* Pods-Futag.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Futag.debug.xcconfig"; path = "Target Support Files/Pods-Futag/Pods-Futag.debug.xcconfig"; sourceTree = "<group>"; };
 		2FBC8B7BB09E177E9E31C869 /* Pods_FutagTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FutagTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F0DA10B27B51B530030F0B8 /* FTDepartmentInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTDepartmentInfoViewController.swift; sourceTree = "<group>"; };
 		5F305EAC27AA90F2005A2CA5 /* FTCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTCollectionViewLayout.swift; sourceTree = "<group>"; };
 		5F305EAE27AA9160005A2CA5 /* FTMainScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTMainScreenCell.swift; sourceTree = "<group>"; };
 		5F305EB027AA9FC4005A2CA5 /* FTBlogScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTBlogScreenCell.swift; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 			children = (
 				5F4CB93E27B2CF9600BE64C5 /* FTDepartmentsScreenViewController.swift */,
 				5F4CB94027B2F54500BE64C5 /* FTDeparmentsCell.swift */,
+				5F0DA10B27B51B530030F0B8 /* FTDepartmentInfoViewController.swift */,
 			);
 			path = Departments;
 			sourceTree = "<group>";
@@ -713,6 +716,7 @@
 				5F305EAD27AA90F2005A2CA5 /* FTCollectionViewLayout.swift in Sources */,
 				5F93388F27942CF200998668 /* User.swift in Sources */,
 				5F305EB727AABAFB005A2CA5 /* FTSetPasswordViewController.swift in Sources */,
+				5F0DA10C27B51B530030F0B8 /* FTDepartmentInfoViewController.swift in Sources */,
 				5F305EC227AB1DA5005A2CA5 /* FTEventsTextScreenViewController.swift in Sources */,
 				5F4CB93F27B2CF9600BE64C5 /* FTDepartmentsScreenViewController.swift in Sources */,
 			);

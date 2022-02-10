@@ -86,6 +86,7 @@ class FTDeparmentsCell: UICollectionViewCell {
         switch traitCollection.userInterfaceStyle {
         case .dark:
             print("Dark")
+            container.backgroundColor = .tertiarySystemBackground
             
             
         case .light:
