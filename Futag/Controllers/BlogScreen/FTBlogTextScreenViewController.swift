@@ -96,6 +96,8 @@ class FTBlogTextScreenViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         configureUI()
+        
+        
     }
     
     //MARK: - API
@@ -106,6 +108,10 @@ class FTBlogTextScreenViewController: UIViewController {
     
     
     //MARK: - Helper
+    
+    func filterImgTag(text: String) -> String{
+        return text.replacingOccurrences(of: "<img[^>]*>", with: "", options: String.CompareOptions.regularExpression)
+    }
     
     func configureUI() {
         
@@ -132,4 +138,23 @@ class FTBlogTextScreenViewController: UIViewController {
         
     }
     
+}
+
+extension String {
+    public var withoutHtml: String {
+        guard let data = self.data(using: .utf8) else {
+            return self
+        }
+
+        let options: [NSAttributedString.DocumentReadingOptionKey: Any] = [
+            .documentType: NSAttributedString.DocumentType.html,
+            .characterEncoding: String.Encoding.utf8.rawValue
+        ]
+
+        guard let attributedString = try? NSAttributedString(data: data, options: options, documentAttributes: nil) else {
+            return self
+        }
+
+        return attributedString.string
+    }
 }

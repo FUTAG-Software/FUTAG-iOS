@@ -65,8 +65,11 @@ class FTBlogScreenViewController: UIViewController {
         commentFlowLayout.minimumLineSpacing = 5
         collectionView.collectionViewLayout = commentFlowLayout
         collectionView.contentInsetAdjustmentBehavior = .always
+        collectionView.backgroundColor = .systemBackground
         
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 0)
+        
+        view.backgroundColor = .white
         
         
     }

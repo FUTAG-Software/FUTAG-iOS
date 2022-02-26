@@ -9,6 +9,17 @@ target 'Futag' do
   pod 'ImageSlideshow', '~> 1.9.0'
   pod "ImageSlideshow/SDWebImage"
   pod 'Alamofire', '~> 5.5'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Database'
+  pod 'lottie-ios'
+  pod 'SDWebImage', '~> 5.0'
+  pod 'Kingfisher', '~> 7.0'
+  pod 'IQKeyboardManagerSwift'
+  pod 'SwiftSoup'
+
 
   target 'FutagTests' do
     inherit! :search_paths

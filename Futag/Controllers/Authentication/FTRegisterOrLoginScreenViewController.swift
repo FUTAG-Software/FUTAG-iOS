@@ -123,9 +123,19 @@ class FTRegisterOrLoginScreenViewController: UIViewController {
     
     @objc func logInButtonPressed() {
         
+        let vc = FTLoginScreenViewController()
+        vc.modalPresentationStyle = .overFullScreen
+        
+        present(vc, animated: true, completion: nil)
+        
     }
     
     @objc func registerButtonPressed() {
+        
+        let vc = FTRegisterViewController()
+        vc.modalPresentationStyle = .overFullScreen
+        
+        present(vc, animated: true, completion: nil)
         
     }
 

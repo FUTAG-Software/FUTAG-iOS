@@ -25,11 +25,18 @@ class FTMainTabBarControllerViewController: UITabBarController {
         configureUI()
         
         configureViewControllers()
+        checkIfUserLoggedIn()
         UITabBar.appearance().tintColor = .clubYellow
+        
+        navigationController?.navigationBar.isHidden = true
+        
+//        logOut()
         
         
         
     }
+    
+   
     
     // MARK: - API
     
@@ -37,7 +44,26 @@ class FTMainTabBarControllerViewController: UITabBarController {
        
     }
     
-    func authenticateUserAndConfigureUI() {
+    func logOut() {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print("DEBUG: Failed sign out")
+        }
+    }
+    
+    func checkIfUserLoggedIn() {
+        
+        if Auth.auth().currentUser == nil {
+            DispatchQueue.main.async {
+                let controller = FTLoginScreenViewController()
+                let nav = UINavigationController(rootViewController: controller)
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: true, completion: nil)
+            }
+            
+        }
+        
        
     }
     
@@ -54,10 +80,12 @@ class FTMainTabBarControllerViewController: UITabBarController {
         case .dark:
             print("Dark")
             tabBar.backgroundColor = .black
+            view.backgroundColor = .black
             
         case .light:
             print("Light")
             tabBar.backgroundColor = .white
+            view.backgroundColor = .white
         default:
             print("something else")
         }

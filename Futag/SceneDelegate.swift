@@ -14,11 +14,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
+        let userDefautls : UserDefaults = UserDefaults.init()
         
-        guard let scene = scene as? UIWindowScene else { return }
-        window = UIWindow(windowScene: scene)
-        window?.rootViewController =  FTMainTabBarControllerViewController()
-        window?.makeKeyAndVisible()
+        if userDefautls.bool(forKey: "showedTutorialFT") == true {
+            
+            guard let scene = scene as? UIWindowScene else { return }
+            window = UIWindow(windowScene: scene)
+            window?.rootViewController =   FTMainTabBarControllerViewController()
+            window?.makeKeyAndVisible()
+            
+        } else {
+            
+            guard let scene = scene as? UIWindowScene else { return }
+            window = UIWindow(windowScene: scene)
+            window?.rootViewController =  UINavigationController(rootViewController: FTOnBoardingScreen1ViewController())
+            window?.makeKeyAndVisible()
+            
+        }
+        
+        
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

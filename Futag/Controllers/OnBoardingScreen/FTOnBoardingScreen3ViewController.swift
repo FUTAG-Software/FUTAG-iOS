@@ -95,6 +95,15 @@ class FTOnBoardingScreen3ViewController: UIViewController {
         
         print("DEBUG: Buton pressed")
         
+        let vc = FTMainTabBarControllerViewController()
+        
+        UIApplication.shared.windows.first?.rootViewController = vc
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
+        
+        let userDefautls : UserDefaults = UserDefaults.init()
+        userDefautls.setValue(true, forKey: "showedTutorialFT")
+        userDefautls.synchronize()
+        
     }
 
 }

@@ -9,8 +9,4 @@ import Foundation
 
 import Firebase
 
-let STORAGE_REF = Storage.storage().reference()
-let STORAGE_PROFILE_IMAGES = STORAGE_REF.child("Images")
-
-let DB_REF = Database.database().reference()
-let REF_USERS = DB_REF.child("Users")
+let COLLECTION_USERS = Firestore.firestore().collection("Users")

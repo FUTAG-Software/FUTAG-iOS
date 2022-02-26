@@ -50,6 +50,7 @@ class FTEventsScreenViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(FTEventScreenCell.self, forCellWithReuseIdentifier:FTEventScreenCell.reuseIdentifier)
+        collectionView.backgroundColor = .systemBackground
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout{
                 layout.minimumLineSpacing = 10
                 layout.minimumInteritemSpacing = 10

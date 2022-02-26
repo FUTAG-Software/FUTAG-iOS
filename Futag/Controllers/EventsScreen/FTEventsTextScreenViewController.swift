@@ -57,6 +57,10 @@ class FTEventsTextScreenViewController: UIViewController {
        label.textColor = .clubYellow
        label.text = "Kayıt için tıklayınız."
        label.numberOfLines = .max
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(labelTapped))
+                label.isUserInteractionEnabled = true
+                label.addGestureRecognizer(tap)
        
        return label
    }()
@@ -93,6 +97,13 @@ class FTEventsTextScreenViewController: UIViewController {
     
     
     //MARK: - Selector
+    
+    @objc func labelTapped() {
+        
+        let controller = FTEventsWebViewScreenController()
+        controller.selectedLink = self.selectedLink
+        navigationController?.pushViewController(controller, animated: true)
+    }
     
     
     

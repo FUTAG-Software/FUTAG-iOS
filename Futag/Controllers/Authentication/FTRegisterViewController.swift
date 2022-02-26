@@ -103,7 +103,7 @@ class FTRegisterViewController: UIViewController {
     }()
     
     private lazy var passwordContainerView: UIView = {
-        let image = UIImage(systemName: "key.fill")
+        let image = UIImage(systemName: "lock.fill")
         let view = Utilities().inputContainerView(withImage: image!, textField: passwordTextField)
         return view
     }()
@@ -125,6 +125,8 @@ class FTRegisterViewController: UIViewController {
         tf.isSecureTextEntry = true
         return tf
     }()
+    
+    let datePicker = UIDatePicker()
     
     private lazy var birhdayContainerView: UIView = {
         let image = UIImage(systemName: "calendar")
@@ -182,6 +184,7 @@ class FTRegisterViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         self.configureUI()
+        showDatePicker()
     }
     
     //MARK: - API
@@ -191,6 +194,13 @@ class FTRegisterViewController: UIViewController {
     
     @objc func loginButtonAction() {
         
+        print("xxxx")
+        
+        let vc = FTLoginScreenViewController()
+        vc.modalPresentationStyle = .overFullScreen
+        
+        present(vc, animated: true, completion: nil)
+        
         
     
     }
@@ -199,6 +209,38 @@ class FTRegisterViewController: UIViewController {
         present(imagePicker, animated: true, completion: nil)
     }
     
+    
+    func showDatePicker(){
+        //Formate Date
+        datePicker.datePickerMode = .date
+
+       //ToolBar
+       let toolbar = UIToolbar();
+       toolbar.sizeToFit()
+       let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+      let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+
+     toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+
+        birthdayTextField.inputAccessoryView = toolbar
+        birthdayTextField.inputView = datePicker
+        
+    }
+    
+    @objc func donedatePicker(){
+
+       let formatter = DateFormatter()
+       formatter.dateFormat = "dd-MM-yyyy"
+       birthdayTextField.text = formatter.string(from: datePicker.date)
+       self.view.endEditing(true)
+     }
+
+     @objc func cancelDatePicker(){
+        self.view.endEditing(true)
+      }
+    
+
     
     
     //MARK: - Helper
@@ -256,19 +298,22 @@ class FTRegisterViewController: UIViewController {
         guard let name = nameTextField.text else { return }
         guard let surname = surnameTextField.text else { return }
         guard let birhday = birthdayTextField.text else { return }
-        
-        
-        
+
+
+
         let credentials = AuthCredentials(email: email, password: password, name: name, surname: surname, profileImage: profileImage, birthday: birhday)
-        
+
         AuthService.shared.registerUser(withCredential: credentials) { error in
             if let error = error {
                 print("DEBUG: Failed to register user \(error.localizedDescription)")
-                
+
                 return
             }
             print("DEBUG: Successfuly registered user with firestore..")
+            
+            self.dismiss(animated: true, completion: nil)
         }
+        
         
         
     }

@@ -109,9 +109,14 @@ class FTMainScreenViewController: UIViewController {
         commentFlowLayout.minimumLineSpacing = 10
         collectionView.collectionViewLayout = commentFlowLayout
         collectionView.contentInsetAdjustmentBehavior = .always
+        collectionView.backgroundColor = .systemBackground
         
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 0)
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
     }
     
     

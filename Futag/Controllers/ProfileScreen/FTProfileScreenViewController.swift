@@ -6,10 +6,17 @@
 //
 
 import UIKit
+import Firebase
 
 class FTProfileScreenViewController: UIViewController {
 
     //MARK: - Properties
+    
+    var user: User? {
+        didSet {
+            navigationItem.title = user?.name
+        }
+    }
     
     private lazy var scroolView: UIScrollView = {
         let sc = UIScrollView(frame: .zero)
@@ -109,7 +116,7 @@ class FTProfileScreenViewController: UIViewController {
         button.layer.cornerRadius = 20
         button.setDimensions(width: 100, height: 50)
         
-//        button.addTarget(self, action: #selector(registerButtonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(logOutButtonPressed), for: .touchUpInside)
 
         
         return button
@@ -125,9 +132,16 @@ class FTProfileScreenViewController: UIViewController {
         
         
         configureUI()
+        fetcUser()
     }
     
     //MARK: - API
+    
+    func fetcUser() {
+        UserService.fetchUser { user in
+            self.user = user
+        }
+    }
     
     
     //MARK: - Selector
@@ -136,6 +150,20 @@ class FTProfileScreenViewController: UIViewController {
         let vc = FTSetProfileInfoViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    @objc func logOutButtonPressed() {
+        do {
+            try Auth.auth().signOut()
+            let controller = FTLoginScreenViewController()
+            let nav = UINavigationController(rootViewController: controller)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true, completion: nil)
+        } catch {
+            print("DEBUG: Failed to log user out")
+        }
+    }
+    
+    
     
     
     

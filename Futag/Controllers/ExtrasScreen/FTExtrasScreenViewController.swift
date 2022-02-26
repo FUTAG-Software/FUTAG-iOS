@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import StoreKit
 
 struct Extra {
     let name: String
     let number: Int
     let imageName: String
 }
+
+
 
 class FTExtrasScreenViewController: UIViewController {
 
@@ -33,6 +36,8 @@ class FTExtrasScreenViewController: UIViewController {
         
         return coll
     }()
+    
+    
     
     
     //MARK: - Lifecycle
@@ -83,10 +88,10 @@ class FTExtrasScreenViewController: UIViewController {
     func getData() {
         
         let departments = Extra(name: "Birimlerimiz", number: 0, imageName: "futagLogoSiyah")
-        let biziOyla = Extra(name: "Bizi Oyla", number: 1, imageName: "inboxMail")
-        let feedBack = Extra(name: "Birimlerimiz", number: 2, imageName: "inboxMail")
-        let infoUs = Extra(name: "Birimlerimiz", number: 3, imageName: "infoIcon")
-        let settings = Extra(name: "Birimlerimiz", number: 4, imageName: "inboxMail")
+        let biziOyla = Extra(name: "Bizi Oyla", number: 1, imageName: "star")
+        let feedBack = Extra(name: "Geri Bildirim", number: 2, imageName: "email")
+        let infoUs = Extra(name: "Hakkımızda", number: 3, imageName: "info")
+        let settings = Extra(name: "Ayarlar", number: 4, imageName: "setting")
         
         extras.append(departments)
         extras.append(biziOyla)
@@ -115,9 +120,48 @@ extension FTExtrasScreenViewController: UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let vc = FTDepartmentsScreenViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        if extras[indexPath.row].number == 0 {
+            
+            
+            let vc = FTDepartmentsScreenViewController()
+            navigationController?.pushViewController(vc, animated: true)
+            
+        } else if extras[indexPath.row].number == 1 {
+            
+            
+            if #available(iOS 14.0, *) {
+                    if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
+                        SKStoreReviewController.requestReview(in: scene)
+                    }
+                } else if #available(iOS 10.3, *) {
+                    SKStoreReviewController.requestReview()
+                }
+            
+        } else if extras[indexPath.row].number == 2 {
+            
+            let appURL = URL(string: "mailto:futag@firat.edu.tr")!
+
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(appURL)
+            }
+            
+        } else if extras[indexPath.row].number == 3 {
+            let vc = FTAboutUsScreenController()
+            navigationController?.pushViewController(vc, animated: true)
+            
+        } else if extras[indexPath.row].number == 4 {
+            
+            let vc = FTSettingsViewController()
+            navigationController?.pushViewController(vc, animated: true)
+            
+        }
+        
+        
     }
     
     
 }
+
+
