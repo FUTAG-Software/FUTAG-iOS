@@ -19,6 +19,7 @@ target 'Futag' do
   pod 'Kingfisher', '~> 7.0'
   pod 'IQKeyboardManagerSwift'
   pod 'SwiftSoup'
+  pod 'JGProgressHUD'
 
 
   target 'FutagTests' do

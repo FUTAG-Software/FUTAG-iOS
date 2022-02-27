@@ -13,6 +13,7 @@
 		5F2B950D27CA634000426900 /* FTSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B950C27CA634000426900 /* FTSettingsViewController.swift */; };
 		5F2B950F27CA64A000426900 /* FTSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B950E27CA64A000426900 /* FTSettingsCell.swift */; };
 		5F2B951227CA69BD00426900 /* FTAboutUsScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B951127CA69BD00426900 /* FTAboutUsScreenController.swift */; };
+		5F2B951427CAE11800426900 /* FTForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B951327CAE11800426900 /* FTForgotPasswordViewController.swift */; };
 		5F305EAD27AA90F2005A2CA5 /* FTCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F305EAC27AA90F2005A2CA5 /* FTCollectionViewLayout.swift */; };
 		5F305EAF27AA9160005A2CA5 /* FTMainScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F305EAE27AA9160005A2CA5 /* FTMainScreenCell.swift */; };
 		5F305EB127AA9FC4005A2CA5 /* FTBlogScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F305EB027AA9FC4005A2CA5 /* FTBlogScreenCell.swift */; };
@@ -91,6 +92,7 @@
 		5F2B950C27CA634000426900 /* FTSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSettingsViewController.swift; sourceTree = "<group>"; };
 		5F2B950E27CA64A000426900 /* FTSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSettingsCell.swift; sourceTree = "<group>"; };
 		5F2B951127CA69BD00426900 /* FTAboutUsScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAboutUsScreenController.swift; sourceTree = "<group>"; };
+		5F2B951327CAE11800426900 /* FTForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		5F305EAC27AA90F2005A2CA5 /* FTCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTCollectionViewLayout.swift; sourceTree = "<group>"; };
 		5F305EAE27AA9160005A2CA5 /* FTMainScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTMainScreenCell.swift; sourceTree = "<group>"; };
 		5F305EB027AA9FC4005A2CA5 /* FTBlogScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTBlogScreenCell.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 				5FB30DCA278B2B8A00F34A23 /* FTRegisterOrLoginScreenViewController.swift */,
 				5F3F3384278B793B002AD9EB /* FTRegisterViewController.swift */,
 				5FE85D1727C797F70044E765 /* FTLoginScreenViewController.swift */,
+				5F2B951327CAE11800426900 /* FTForgotPasswordViewController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -703,6 +706,7 @@
 				5F3514A9278A4B44003F3097 /* Constants.swift in Sources */,
 				5F305EB927AAC193005A2CA5 /* FTExtrasScreenCell.swift in Sources */,
 				5F305EAF27AA9160005A2CA5 /* FTMainScreenCell.swift in Sources */,
+				5F2B951427CAE11800426900 /* FTForgotPasswordViewController.swift in Sources */,
 				5F3514AD278A4B63003F3097 /* AuthService.swift in Sources */,
 				5F305EAD27AA90F2005A2CA5 /* FTCollectionViewLayout.swift in Sources */,
 				5F93388F27942CF200998668 /* User.swift in Sources */,

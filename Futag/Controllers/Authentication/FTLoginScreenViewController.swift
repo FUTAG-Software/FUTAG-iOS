@@ -7,12 +7,20 @@
 
 import UIKit
 
+protocol AuthenticationDelegate: class {
+    func authenticationDidComplete()
+}
+
 class FTLoginScreenViewController: UIViewController {
 
     //MARK: - Properties
     
     private let imagePicker = UIImagePickerController()
     private var profileImage: UIImage?
+    
+    weak var delegate: AuthenticationDelegate?
+    
+    private var viewModel = LoginViewModel()
     
     private lazy var scroolView: UIScrollView = {
         let sc = UIScrollView(frame: .zero)
@@ -90,7 +98,7 @@ class FTLoginScreenViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Giriş Yap", for: .normal)
         button.setTitleColor(.clubGray, for: .normal)
-        button.backgroundColor = .clubYellow
+        button.backgroundColor = .clubYellow.withAlphaComponent(0.5)
         button.layer.cornerRadius = 20
         
         button.addTarget(self, action: #selector(registerButtonPressed), for: .touchUpInside)
@@ -122,6 +130,29 @@ class FTLoginScreenViewController: UIViewController {
         return button
     }()
     
+    private lazy var forgotPassLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Şifreni mi unuttun?"
+        label.font = UIFont.systemFont(ofSize: 16, weight: .light)
+        label.textColor = .lightGray
+        label.numberOfLines = 2
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(labelTapped))
+                label.isUserInteractionEnabled = true
+                label.addGestureRecognizer(tap)
+        
+        return label
+    }()
+    
+    private lazy var logoImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.setDimensions(width: 150, height: 160)
+        iv.image = UIImage(named: "futagLogoSiyah")
+        iv.tintColor = .lightGray
+        
+        return iv
+    }()
+    
     
     //MARK: - Lifecycle
 
@@ -131,6 +162,7 @@ class FTLoginScreenViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         self.configureUI()
+        
     }
     
     //MARK: - API
@@ -141,6 +173,7 @@ class FTLoginScreenViewController: UIViewController {
     @objc func loginButtonAction() {
         
         let vc = FTRegisterViewController()
+        vc.delegate = delegate
         
         navigationController?.pushViewController(vc, animated: true)
         
@@ -160,7 +193,8 @@ class FTLoginScreenViewController: UIViewController {
                 return
             }
             
-            self.dismiss(animated: true, completion: nil)
+            self.delegate?.authenticationDidComplete()
+            
             
         }
         
@@ -174,6 +208,24 @@ class FTLoginScreenViewController: UIViewController {
         present(imagePicker, animated: true, completion: nil)
     }
     
+    @objc func labelTapped() {
+        
+        print("xxx")
+        let controller = FTForgotPasswordViewController()
+        controller.delegate = self
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc func textDidChange(sender: UITextField) {
+        if sender == emailTextField {
+            viewModel.email = sender.text
+        } else {
+            viewModel.email = sender.text
+        }
+        
+        updateForm()
+    }
+    
     
     
     //MARK: - Helper
@@ -183,6 +235,9 @@ class FTLoginScreenViewController: UIViewController {
         
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
+        
+        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         
         view.addSubview(scroolView)
         scroolView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0)
@@ -208,16 +263,45 @@ class FTLoginScreenViewController: UIViewController {
         scrollSubView.addSubview(registerButton)
         registerButton.anchor(top: tfStack.bottomAnchor, left: scrollSubView.leftAnchor, right: scrollSubView.rightAnchor, paddingTop: 40, paddingLeft: 40,  paddingRight: 40, height: 50)
         
+        scrollSubView.addSubview(forgotPassLabel)
+        forgotPassLabel.centerX(inView: scrollSubView, topAnchor: registerButton.bottomAnchor, paddingTop: 20)
+        
+        scrollSubView.addSubview(logoImageView)
+        logoImageView.centerX(inView: scrollSubView, topAnchor: forgotPassLabel.bottomAnchor, paddingTop: 20)
+        
         scrollSubView.addSubview(haveAccountLabel)
-        haveAccountLabel.anchor(top: registerButton.bottomAnchor, left: registerButton.leftAnchor,bottom: scrollSubView.bottomAnchor, paddingTop: 30, paddingLeft: 50, paddingBottom: 20)
+        haveAccountLabel.anchor(top: logoImageView.bottomAnchor, left: registerButton.leftAnchor,bottom: scrollSubView.bottomAnchor, paddingTop: 20, paddingLeft: 70, paddingBottom: 20)
 
         scrollSubView.addSubview(logInButton)
-        logInButton.anchor(top: registerButton.bottomAnchor, left: haveAccountLabel.rightAnchor, bottom: scrollSubView.bottomAnchor, paddingTop: 27.5, paddingLeft: -5, paddingBottom: 20)
+        logInButton.anchor(top: logoImageView.bottomAnchor, left: haveAccountLabel.rightAnchor, bottom: scrollSubView.bottomAnchor, paddingTop: 20, paddingLeft: -5, paddingBottom: 20)
+        
+    }
+    
+    func configureNotificationObservers(){
         
     }
     
     
-    
+}
 
+//MARK: - FormViewModel
+
+extension FTLoginScreenViewController: FormViewModel {
+    func updateForm() {
+        registerButton.backgroundColor = viewModel.buttonBackgroundColor
+        registerButton.isEnabled = viewModel.formIsValid
+    }
+    
+}
+
+//MARK: - ResetPasswordControllerDelegate
+
+extension FTLoginScreenViewController: ResetPasswordControllerDelegate {
+    func controllerDidSendResetPasswordLink(_ controller: FTForgotPasswordViewController) {
+        navigationController?.popViewController(animated: true)
+        self.showMessage(withTitle: "Başarılı", message: "Email adresinize şifre yenileme linkini gönderdik")
+    }
+    
+    
 }
 

@@ -14,6 +14,8 @@ class FTRegisterViewController: UIViewController {
     private let imagePicker = UIImagePickerController()
     private var profileImage: UIImage?
     
+    weak var delegate: AuthenticationDelegate?
+    
     private lazy var scroolView: UIScrollView = {
         let sc = UIScrollView(frame: .zero)
         sc.backgroundColor = .white
@@ -196,10 +198,7 @@ class FTRegisterViewController: UIViewController {
         
         print("xxxx")
         
-        let vc = FTLoginScreenViewController()
-        vc.modalPresentationStyle = .overFullScreen
-        
-        present(vc, animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
         
         
     
@@ -293,25 +292,62 @@ class FTRegisterViewController: UIViewController {
         
         
         let profileImage = profileImage
-        guard let email = emailTextField.text?.lowercased() else { return }
-        guard let password = passwordTextField.text else { return }
-        guard let name = nameTextField.text else { return }
-        guard let surname = surnameTextField.text else { return }
-        guard let birhday = birthdayTextField.text else { return }
+        if profileImage == nil {
+            showMessage(withTitle: "Profil Fotoğrafı", message: "Lütfen bir profil fotoğrafı seçin")
+            
+            return
+            
+            
+        }
+        
+        guard let name = nameTextField.text?.trimmingCharacters(in: .whitespaces).lowercased(),
+              !name.isEmpty else {
+            showMessage(withTitle: "İsim", message: "Lütfen isminizi girin")
+            return
+        }
+        guard let surname = surnameTextField.text?.trimmingCharacters(in: .whitespaces).lowercased(),
+              !surname.isEmpty else {
+            showMessage(withTitle: "Soyad", message: "Lütfen soyadınızı girin")
+            return
+        }
+        
+        guard let email = emailTextField.text?.trimmingCharacters(in: .whitespaces).lowercased(),
+              !email.isEmpty else {
+            showMessage(withTitle: "Email", message: "Lütfen email adresinizi girin")
+            return
+        }
+        guard let password = passwordTextField.text?.trimmingCharacters(in: .whitespaces).lowercased(),
+              !password.isEmpty else {
+            showMessage(withTitle: "Parola", message: "Lütfen parolanızı girin")
+            return
+        }
+       
+        guard let birhday = birthdayTextField.text?.trimmingCharacters(in: .whitespaces).lowercased(),
+              !birhday.isEmpty else {
+            showMessage(withTitle: "Doğum Günü", message: "Lütfen doğum gününüzü girin")
+            return
+        }
 
 
 
         let credentials = AuthCredentials(email: email, password: password, name: name, surname: surname, profileImage: profileImage, birthday: birhday)
+        
+        showLoader(true)
 
         AuthService.shared.registerUser(withCredential: credentials) { error in
             if let error = error {
                 print("DEBUG: Failed to register user \(error.localizedDescription)")
+                
+                self.showLoader(false)
 
                 return
             }
             print("DEBUG: Successfuly registered user with firestore..")
+            self.showLoader(false)
             
-            self.dismiss(animated: true, completion: nil)
+            
+            self.delegate?.authenticationDidComplete()
+                
         }
         
         

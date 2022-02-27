@@ -13,7 +13,15 @@ class FTMainTabBarControllerViewController: UITabBarController {
     
     // MARK: - Properties
     
-    var user: User?
+    var user: User? {
+        
+        didSet {
+            guard let user = user else {return}
+            configureViewControllers(withUser: user)
+            
+        }
+        
+    }
     
     
     
@@ -24,8 +32,9 @@ class FTMainTabBarControllerViewController: UITabBarController {
 //        authenticateUserAndConfigureUI()
         configureUI()
         
-        configureViewControllers()
+        
         checkIfUserLoggedIn()
+        fetcUser()
         UITabBar.appearance().tintColor = .clubYellow
         
         navigationController?.navigationBar.isHidden = true
@@ -40,8 +49,10 @@ class FTMainTabBarControllerViewController: UITabBarController {
     
     // MARK: - API
     
-    func fetchUser() {
-       
+    func fetcUser() {
+        UserService.fetchUser { user in
+            self.user = user
+        }
     }
     
     func logOut() {
@@ -57,6 +68,7 @@ class FTMainTabBarControllerViewController: UITabBarController {
         if Auth.auth().currentUser == nil {
             DispatchQueue.main.async {
                 let controller = FTLoginScreenViewController()
+                controller.delegate = self
                 let nav = UINavigationController(rootViewController: controller)
                 nav.modalPresentationStyle = .fullScreen
                 self.present(nav, animated: true, completion: nil)
@@ -93,7 +105,7 @@ class FTMainTabBarControllerViewController: UITabBarController {
         
     }
     
-    func configureViewControllers() {
+    func configureViewControllers(withUser user: User) {
         
         let blog = FTBlogScreenViewController()
         let nav1 = templateNavigationController(image: UIImage(systemName: "newspaper.fill"), title: "Blog", rootViewController: blog)
@@ -104,7 +116,7 @@ class FTMainTabBarControllerViewController: UITabBarController {
         let main = FTMainScreenViewController()
         let nav3 = templateNavigationController(image: UIImage(systemName: "house.fill"), title: "Ana Sayfa", rootViewController: main)
 
-        let profile = FTProfileScreenViewController()
+        let profile = FTProfileScreenViewController(user: user)
         let nav4 = templateNavigationController(image: UIImage(systemName: "person.fill"), title: "Profil", rootViewController: profile)
         
         let extras = FTExtrasScreenViewController()
@@ -149,4 +161,14 @@ class DarkModeAwareNavigationController: UINavigationController {
             self.navigationBar.barTintColor = UITraitCollection.current.userInterfaceStyle == .dark ? .black : .white
   }
   }
+}
+
+extension FTMainTabBarControllerViewController: AuthenticationDelegate {
+    func authenticationDidComplete() {
+        print("Debug: Auth did complete. User updated")
+        fetcUser()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
 }

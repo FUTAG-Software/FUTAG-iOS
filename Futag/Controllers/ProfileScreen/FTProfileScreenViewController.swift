@@ -7,16 +7,13 @@
 
 import UIKit
 import Firebase
+import SDWebImage
 
 class FTProfileScreenViewController: UIViewController {
 
     //MARK: - Properties
     
-    var user: User? {
-        didSet {
-            navigationItem.title = user?.name
-        }
-    }
+    private var user: User
     
     private lazy var scroolView: UIScrollView = {
         let sc = UIScrollView(frame: .zero)
@@ -47,6 +44,8 @@ class FTProfileScreenViewController: UIViewController {
         iv.setDimensions(width: 150, height: 150)
         iv.image = UIImage(named: "plus_photo")
         iv.tintColor = .clubGray
+        iv.layer.cornerRadius = 75
+        iv.layer.masksToBounds = true
         
         
         
@@ -124,7 +123,16 @@ class FTProfileScreenViewController: UIViewController {
     
     
     //MARK: - Lifecycle
-
+    
+    init(user: User) {
+        self.user = user
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -132,16 +140,12 @@ class FTProfileScreenViewController: UIViewController {
         
         
         configureUI()
-        fetcUser()
+        configureUserInfo()
     }
     
     //MARK: - API
     
-    func fetcUser() {
-        UserService.fetchUser { user in
-            self.user = user
-        }
-    }
+    
     
     
     //MARK: - Selector
@@ -155,6 +159,7 @@ class FTProfileScreenViewController: UIViewController {
         do {
             try Auth.auth().signOut()
             let controller = FTLoginScreenViewController()
+            controller.delegate = self.tabBarController as? FTMainTabBarControllerViewController
             let nav = UINavigationController(rootViewController: controller)
             nav.modalPresentationStyle = .fullScreen
             self.present(nav, animated: true, completion: nil)
@@ -168,6 +173,16 @@ class FTProfileScreenViewController: UIViewController {
     
     
     //MARK: - Helper
+    
+    func configureUserInfo() {
+        navigationItem.title = user.name
+        birthdayTextField.text = user.birthday
+        emailTextField.text = user.email
+        nameLabel.text = "\(user.name) \(user.surname)"
+        
+        guard let url = URL(string: "\(user.profileImage!)") else {return}
+        profileImageView.sd_setImage(with: url, completed: nil)
+    }
     
     func configureUI() {
         

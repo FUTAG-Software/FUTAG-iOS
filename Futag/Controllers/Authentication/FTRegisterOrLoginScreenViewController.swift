@@ -122,11 +122,9 @@ class FTRegisterOrLoginScreenViewController: UIViewController {
     }
     
     @objc func logInButtonPressed() {
+        print("zxzxzx")
         
-        let vc = FTLoginScreenViewController()
-        vc.modalPresentationStyle = .overFullScreen
-        
-        present(vc, animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
         
     }
     

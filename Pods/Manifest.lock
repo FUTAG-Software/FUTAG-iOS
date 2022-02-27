@@ -495,6 +495,7 @@ PODS:
     - ImageSlideshow/Core
     - SDWebImage (>= 3.7)
   - IQKeyboardManagerSwift (6.5.9)
+  - JGProgressHUD (2.2)
   - Kingfisher (7.1.2)
   - leveldb-library (1.22.1)
   - lottie-ios (3.3.0)
@@ -519,6 +520,7 @@ DEPENDENCIES:
   - ImageSlideshow (~> 1.9.0)
   - ImageSlideshow/SDWebImage
   - IQKeyboardManagerSwift
+  - JGProgressHUD
   - Kingfisher (~> 7.0)
   - lottie-ios
   - SDWebImage (~> 5.0)
@@ -546,6 +548,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - ImageSlideshow
     - IQKeyboardManagerSwift
+    - JGProgressHUD
     - Kingfisher
     - leveldb-library
     - lottie-ios
@@ -575,6 +578,7 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
   ImageSlideshow: be305b54eaf2b2cfc7a7141c7c734605d44dc07d
   IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
+  JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
   Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
@@ -583,6 +587,6 @@ SPEC CHECKSUMS:
   SDWebImage: 53179a2dba77246efa8a9b85f5c5b21f8f43e38f
   SwiftSoup: ba8ea2c91151881a298cba4b0628ef31e835a77f
 
-PODFILE CHECKSUM: b929074332c4a27549d90d2a8e754df0f5a8d95b
+PODFILE CHECKSUM: 50f0d67a13fc62b70326639f93caa15fbbd59b7d
 
 COCOAPODS: 1.11.2
