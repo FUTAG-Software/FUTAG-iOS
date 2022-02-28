@@ -30,6 +30,7 @@ class FTMainTabBarControllerViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        authenticateUserAndConfigureUI()
+        
         configureUI()
         
         
@@ -38,6 +39,7 @@ class FTMainTabBarControllerViewController: UITabBarController {
         UITabBar.appearance().tintColor = .clubYellow
         
         navigationController?.navigationBar.isHidden = true
+        
         
         
         
@@ -123,6 +125,7 @@ class FTMainTabBarControllerViewController: UITabBarController {
         let nav5 = templateNavigationController(image: UIImage(systemName: "increase.indent"), title: "Daha Fazla", rootViewController: extras)
         
         viewControllers = [nav1, nav2, nav3, nav4, nav5]
+        
     }
     
     func templateNavigationController(image: UIImage?, title: String, rootViewController: UIViewController) -> UINavigationController {

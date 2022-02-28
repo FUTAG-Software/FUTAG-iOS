@@ -71,6 +71,11 @@ class FTBlogScreenViewController: UIViewController {
         
         view.backgroundColor = .white
         
+        let center = UNUserNotificationCenter.current()
+        
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
+        }
+        
         
     }
     

@@ -116,6 +116,7 @@ extension FTEventsScreenViewController: UICollectionViewDelegate, UICollectionVi
         vc.selectedTitle = eventList[indexPath.row].title
         vc.selectedDetail = eventList[indexPath.row].details
         vc.selectedLink = eventList[indexPath.row].form_link
+        vc.selectedDetail2 = eventList[indexPath.row].det
         navigationController?.pushViewController(vc, animated: true)
     }
     

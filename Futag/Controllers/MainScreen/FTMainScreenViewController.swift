@@ -10,6 +10,7 @@ import ImageSlideshow
 import Kingfisher
 import SDWebImage
 import Alamofire
+import UserNotifications
 
 struct MainAd: Decodable {
     let id: Int
@@ -88,12 +89,18 @@ class FTMainScreenViewController: UIViewController {
         case .dark:
             print("Dark")
             
+            view.backgroundColor = .black
+            collectionView.backgroundColor = .black
+            
             
         case .light:
             view.backgroundColor = .white
+            collectionView.backgroundColor = .white
         default:
             print("something else")
         }
+        
+        
         
         
         
@@ -109,7 +116,7 @@ class FTMainScreenViewController: UIViewController {
         commentFlowLayout.minimumLineSpacing = 10
         collectionView.collectionViewLayout = commentFlowLayout
         collectionView.contentInsetAdjustmentBehavior = .always
-        collectionView.backgroundColor = .systemBackground
+        
         
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 0)
         
@@ -150,7 +157,7 @@ class FTMainScreenViewController: UIViewController {
     
     func configureUI() {
         
-        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.isHidden = false
         
         
         headerImagemageSlide.slideshowInterval = 5.0

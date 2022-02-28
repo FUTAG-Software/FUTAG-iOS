@@ -40,6 +40,7 @@ class FTSettingsViewController: UIViewController {
     lazy var usersSwitch: UISwitch = {
         let sw = UISwitch()
         sw.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        sw.onTintColor = .clubYellow
         sw.addTarget(self, action: #selector(darkModeSwitchChanged), for: UIControl.Event.valueChanged)
 
         
@@ -51,6 +52,7 @@ class FTSettingsViewController: UIViewController {
         let sw = UISwitch()
         sw.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
         sw.isOn = false
+        sw.onTintColor = .clubYellow
         sw.addTarget(self, action: #selector(notificatonSwitchChanged), for: UIControl.Event.valueChanged)
 
         
@@ -62,6 +64,7 @@ class FTSettingsViewController: UIViewController {
         let sw = UISwitch()
         sw.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
         sw.isOn = false
+        sw.onTintColor = .clubYellow
         sw.addTarget(self, action: #selector(notificatonSwitchChanged), for: UIControl.Event.valueChanged)
 
         
@@ -137,6 +140,40 @@ class FTSettingsViewController: UIViewController {
         
         view.addSubview(collectionView)
         collectionView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
+        
+        switch traitCollection.userInterfaceStyle {
+        case .dark:
+            print("Dark")
+            
+            usersSwitch.isOn = true
+            
+            
+        case .light:
+            
+            usersSwitch.isOn = false
+        default:
+            print("something else")
+        }
+        
+        let current = UNUserNotificationCenter.current()
+
+        current.getNotificationSettings(completionHandler: { (settings) in
+            if settings.authorizationStatus == .notDetermined {
+                print("// Notification permission has not been asked yet, go for it!")
+                DispatchQueue.main.async {
+                    self.usersSwitch2.isOn = false
+                }
+            } else if settings.authorizationStatus == .denied {
+                print("// Notification permission was previously denied, go to settings & privacy to re-enable")
+                DispatchQueue.main.async {
+                    self.usersSwitch2.isOn = false
+                }
+            } else if settings.authorizationStatus == .authorized {
+                DispatchQueue.main.async {
+                    self.usersSwitch2.isOn = true
+                }
+            }
+        })
         
         
         

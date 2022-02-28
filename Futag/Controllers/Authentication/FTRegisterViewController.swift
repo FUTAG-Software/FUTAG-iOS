@@ -18,7 +18,7 @@ class FTRegisterViewController: UIViewController {
     
     private lazy var scroolView: UIScrollView = {
         let sc = UIScrollView(frame: .zero)
-        sc.backgroundColor = .white
+        sc.backgroundColor = .systemBackground
         sc.contentSize.width = self.view.frame.width
         sc.frame = self.view.bounds
         sc.autoresizingMask = .flexibleHeight
@@ -30,7 +30,7 @@ class FTRegisterViewController: UIViewController {
     
     private lazy var scrollSubView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         
         
         return view
@@ -40,8 +40,8 @@ class FTRegisterViewController: UIViewController {
     
     private let registerLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        label.textColor = .label
+        label.font = UIFont.systemFont(ofSize: 24, weight: .medium)
         label.numberOfLines = 3
         label.textAlignment = .center
         label.text = "Kayıt Ol"
@@ -52,7 +52,7 @@ class FTRegisterViewController: UIViewController {
     
     private let infoTextLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .lightGray
+        label.textColor = .label
         label.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         label.numberOfLines = .max
         label.textAlignment = .center
@@ -64,8 +64,6 @@ class FTRegisterViewController: UIViewController {
     
     private let plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "plus_photo"), for: .normal)
-        button.tintColor = .clubGray
         button.addTarget(self, action: #selector(handleAddProfilePhoto), for: .touchUpInside)
         return button
     }()
@@ -252,6 +250,20 @@ class FTRegisterViewController: UIViewController {
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
         
+        switch traitCollection.userInterfaceStyle {
+        case .dark:
+            print("Dark")
+            plusPhotoButton.tintColor = .white
+            plusPhotoButton.setImage(UIImage(named: "userProfileWhite"), for: .normal)
+            
+            
+        case .light:
+            plusPhotoButton.tintColor = .clubGray
+            plusPhotoButton.setImage(UIImage(named: "userProfileBlack"), for: .normal)
+        default:
+            print("something else")
+        }
+        
         view.addSubview(scroolView)
         scroolView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0)
         
@@ -300,12 +312,12 @@ class FTRegisterViewController: UIViewController {
             
         }
         
-        guard let name = nameTextField.text?.trimmingCharacters(in: .whitespaces).lowercased(),
+        guard let name = nameTextField.text?.trimmingCharacters(in: .whitespaces),
               !name.isEmpty else {
             showMessage(withTitle: "İsim", message: "Lütfen isminizi girin")
             return
         }
-        guard let surname = surnameTextField.text?.trimmingCharacters(in: .whitespaces).lowercased(),
+        guard let surname = surnameTextField.text?.trimmingCharacters(in: .whitespaces),
               !surname.isEmpty else {
             showMessage(withTitle: "Soyad", message: "Lütfen soyadınızı girin")
             return
@@ -316,13 +328,13 @@ class FTRegisterViewController: UIViewController {
             showMessage(withTitle: "Email", message: "Lütfen email adresinizi girin")
             return
         }
-        guard let password = passwordTextField.text?.trimmingCharacters(in: .whitespaces).lowercased(),
+        guard let password = passwordTextField.text?.trimmingCharacters(in: .whitespaces),
               !password.isEmpty else {
             showMessage(withTitle: "Parola", message: "Lütfen parolanızı girin")
             return
         }
        
-        guard let birhday = birthdayTextField.text?.trimmingCharacters(in: .whitespaces).lowercased(),
+        guard let birhday = birthdayTextField.text?.trimmingCharacters(in: .whitespaces),
               !birhday.isEmpty else {
             showMessage(withTitle: "Doğum Günü", message: "Lütfen doğum gününüzü girin")
             return

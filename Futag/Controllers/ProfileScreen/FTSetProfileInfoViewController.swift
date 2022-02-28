@@ -202,19 +202,19 @@ class FTSetProfileInfoViewController: UIViewController {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         
         
-        guard let name = nameTextField.text?.trimmingCharacters(in: .whitespaces).lowercased(),
+        guard let name = nameTextField.text?.trimmingCharacters(in: .whitespaces),
               !name.isEmpty else {
             showMessage(withTitle: "İsim", message: "Lütfen isminizi girin")
             return
         }
         
-        guard let surname = surnameTextField.text?.trimmingCharacters(in: .whitespaces).lowercased(),
+        guard let surname = surnameTextField.text?.trimmingCharacters(in: .whitespaces),
               !surname.isEmpty else {
             showMessage(withTitle: "Soyad", message: "Lütfen soyadınızı girin")
             return
         }
         
-        guard let birthday = birthdayTextField.text?.trimmingCharacters(in: .whitespaces).lowercased(),
+        guard let birthday = birthdayTextField.text?.trimmingCharacters(in: .whitespaces),
               !birthday.isEmpty else {
             showMessage(withTitle: "Soyad", message: "Lütfen soyadınızı girin")
             return

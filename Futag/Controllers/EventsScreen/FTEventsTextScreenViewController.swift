@@ -16,13 +16,14 @@ class FTEventsTextScreenViewController: UIViewController {
     var selectedImage: String?
     var selectedLink: String?
     var selectedDetail: String?
+    var selectedDetail2: String?
     var selectedTitle: String?
     
     //MARK: - Properties
     
     private lazy var scroolView: UIScrollView = {
         let sc = UIScrollView(frame: .zero)
-        sc.backgroundColor = .white
+        sc.backgroundColor = .systemBackground
         sc.contentSize.width = self.view.frame.width
         sc.frame = self.view.bounds
         sc.autoresizingMask = .flexibleHeight
@@ -34,7 +35,7 @@ class FTEventsTextScreenViewController: UIViewController {
     
     private lazy var scrollSubView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         
         
         return view
@@ -67,14 +68,24 @@ class FTEventsTextScreenViewController: UIViewController {
     
     private lazy var contentTextView: UILabel = {
        let label = UILabel()
-       label.textColor = .black
+       label.textColor = .label
        label.numberOfLines = .max
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         
-        let formattedString = selectedDetail!
-                                .htmlAttributedString()
-            .with(font:UIFont.systemFont(ofSize: 18, weight: .semibold))
+        label.text = selectedDetail
         
-        label.attributedText = formattedString
+       
+       return label
+   }()
+    
+    private lazy var contentTextView2: UILabel = {
+       let label = UILabel()
+       label.textColor = .label
+       label.numberOfLines = .max
+        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        
+        label.text = selectedDetail2
+        
        
        return label
    }()
@@ -89,7 +100,7 @@ class FTEventsTextScreenViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        view.backgroundColor = .white
+        
         configureUI()
     }
     
@@ -111,10 +122,6 @@ class FTEventsTextScreenViewController: UIViewController {
     
     func configureUI() {
         
-        
-        
-        
-        
         self.title = selectedTitle
         navigationController?.navigationBar.prefersLargeTitles = false
         
@@ -131,7 +138,10 @@ class FTEventsTextScreenViewController: UIViewController {
         authorLabel.anchor(top: scrollSubView.topAnchor, right: scrollSubView.rightAnchor, paddingTop: 15, paddingRight: 15)
         
         scrollSubView.addSubview(contentTextView)
-        contentTextView.anchor(top: authorLabel.bottomAnchor, left: scrollSubView.leftAnchor, bottom: scrollSubView.bottomAnchor, right: scrollSubView.rightAnchor,paddingTop: 20, paddingLeft: 10, paddingBottom: 80, paddingRight: 10)
+        contentTextView.anchor(top: authorLabel.bottomAnchor, left: scrollSubView.leftAnchor, right: scrollSubView.rightAnchor,paddingTop: 20, paddingLeft: 10, paddingBottom: 80, paddingRight: 10)
+        
+        scrollSubView.addSubview(contentTextView2)
+        contentTextView2.anchor(top: contentTextView.bottomAnchor, left: scrollSubView.leftAnchor, bottom: scrollSubView.bottomAnchor, right: scrollSubView.rightAnchor,paddingTop: 20, paddingLeft: 10, paddingBottom: 80, paddingRight: 10)
         
         
         

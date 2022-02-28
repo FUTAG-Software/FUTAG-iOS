@@ -13,7 +13,7 @@ class FTSetPasswordViewController: UIViewController {
     
     private lazy var scroolView: UIScrollView = {
         let sc = UIScrollView(frame: .zero)
-        sc.backgroundColor = .white
+        sc.backgroundColor = .systemBackground
         sc.contentSize.width = self.view.frame.width
         sc.frame = self.view.bounds
         sc.autoresizingMask = .flexibleHeight
@@ -25,7 +25,7 @@ class FTSetPasswordViewController: UIViewController {
     
     private lazy var scrollSubView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         
         
         return view
@@ -35,7 +35,7 @@ class FTSetPasswordViewController: UIViewController {
     
     private let setPasswordLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .gray
+        label.textColor = .label
         label.font = UIFont.systemFont(ofSize: 18, weight: .light)
         label.numberOfLines = 3
         label.textAlignment = .center
@@ -106,7 +106,7 @@ class FTSetPasswordViewController: UIViewController {
     
     private let clubLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .label
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         label.numberOfLines = 3
         label.textAlignment = .center

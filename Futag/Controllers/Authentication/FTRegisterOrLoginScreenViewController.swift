@@ -31,7 +31,7 @@ class FTRegisterOrLoginScreenViewController: UIViewController {
     
     private let clubLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .label
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         label.numberOfLines = 3
         label.textAlignment = .center

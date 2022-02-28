@@ -24,7 +24,7 @@ class FTLoginScreenViewController: UIViewController {
     
     private lazy var scroolView: UIScrollView = {
         let sc = UIScrollView(frame: .zero)
-        sc.backgroundColor = .white
+        sc.backgroundColor = .systemBackground
         sc.contentSize.width = self.view.frame.width
         sc.frame = self.view.bounds
         sc.autoresizingMask = .flexibleHeight
@@ -36,7 +36,7 @@ class FTLoginScreenViewController: UIViewController {
     
     private lazy var scrollSubView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         
         
         return view
@@ -46,7 +46,7 @@ class FTLoginScreenViewController: UIViewController {
     
     private let registerLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .label
         label.font = UIFont.systemFont(ofSize: 24, weight: .medium)
         label.numberOfLines = 3
         label.textAlignment = .center
@@ -58,7 +58,7 @@ class FTLoginScreenViewController: UIViewController {
     
     private let infoTextLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .lightGray
+        label.textColor = .label
         label.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         label.numberOfLines = .max
         label.textAlignment = .center
@@ -111,7 +111,7 @@ class FTLoginScreenViewController: UIViewController {
         let label = UILabel()
         label.text = "Hesabın yok mu?"
         label.font = UIFont.systemFont(ofSize: 13, weight: .light)
-        label.textColor = .lightGray
+        label.textColor = .label
         label.numberOfLines = 2
         
         return label
@@ -134,7 +134,7 @@ class FTLoginScreenViewController: UIViewController {
         let label = UILabel()
         label.text = "Şifreni mi unuttun?"
         label.font = UIFont.systemFont(ofSize: 16, weight: .light)
-        label.textColor = .lightGray
+        label.textColor = .label
         label.numberOfLines = 2
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(labelTapped))
@@ -147,7 +147,7 @@ class FTLoginScreenViewController: UIViewController {
     private lazy var logoImageView: UIImageView = {
         let iv = UIImageView()
         iv.setDimensions(width: 150, height: 160)
-        iv.image = UIImage(named: "futagLogoSiyah")
+        
         iv.tintColor = .lightGray
         
         return iv
@@ -189,7 +189,7 @@ class FTLoginScreenViewController: UIViewController {
             showMessage(withTitle: "Email", message: "Lütfen email adresinizi girin")
             return
         }
-        guard let password = passwordTextField.text?.trimmingCharacters(in: .whitespaces).lowercased(),
+        guard let password = passwordTextField.text?.trimmingCharacters(in: .whitespaces),
               !password.isEmpty else {
             showMessage(withTitle: "Parola", message: "Lütfen parolanızı girin")
             return
@@ -242,8 +242,21 @@ class FTLoginScreenViewController: UIViewController {
     func configureUI() {
         
         
-        view.backgroundColor = .white
+        view.backgroundColor = .black
         navigationController?.navigationBar.isHidden = true
+        
+        switch traitCollection.userInterfaceStyle {
+        case .dark:
+            print("Dark")
+            
+            logoImageView.image = UIImage(named: "futagLogo")
+            
+            
+        case .light:
+            logoImageView.image = UIImage(named: "futagLogoSiyah")
+        default:
+            print("something else")
+        }
         
         emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
