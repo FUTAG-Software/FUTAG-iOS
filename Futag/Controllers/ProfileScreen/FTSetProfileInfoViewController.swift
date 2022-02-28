@@ -6,10 +6,19 @@
 //
 
 import UIKit
+import SDWebImage
+import FirebaseFirestore
+import Firebase
 
 class FTSetProfileInfoViewController: UIViewController {
 
     //MARK: - Properties
+    
+    
+    var selectedImage: URL?
+    var selectedName: String?
+    var selectedSurname: String?
+    var selectedBirthday: String?
     
     private lazy var scroolView: UIScrollView = {
         let sc = UIScrollView(frame: .zero)
@@ -38,21 +47,23 @@ class FTSetProfileInfoViewController: UIViewController {
     private lazy var profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.setDimensions(width: 150, height: 150)
-        iv.image = UIImage(named: "plus_photo")
+        iv.sd_setImage(with: self.selectedImage, completed: nil)
         iv.tintColor = .clubGray
+        iv.layer.cornerRadius = 75
+        iv.layer.masksToBounds = true
         
         
         
         return iv
     }()
     
-    private let nameLabel: UILabel = {
+    private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.textColor = .label
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.numberOfLines = 3
         label.textAlignment = .center
-        label.text = "Kamil Çömlekçi"
+        label.text = selectedName
         
         
         return label
@@ -64,9 +75,9 @@ class FTSetProfileInfoViewController: UIViewController {
         return view
     }()
     
-    private let nameTextField: UITextField = {
+    private lazy var nameTextField: UITextField = {
         let tf = Utilities().textField(withPlaceholder: "Adınız")
-        tf.text = "Kamil"
+        tf.text = selectedName
         return tf
     }()
     
@@ -76,9 +87,9 @@ class FTSetProfileInfoViewController: UIViewController {
         return view
     }()
     
-    private let surnameTextField: UITextField = {
+    private lazy var surnameTextField: UITextField = {
         let tf = Utilities().textField(withPlaceholder: "Soyadınız")
-        tf.text = "Çömlekçi"
+        tf.text = selectedSurname
         return tf
     }()
     
@@ -91,9 +102,9 @@ class FTSetProfileInfoViewController: UIViewController {
     let datePicker = UIDatePicker()
 
     
-    private let birthdayTextField: UITextField = {
+    private lazy var birthdayTextField: UITextField = {
         let tf = Utilities().textField(withPlaceholder: "Doğum Gününüz")
-        tf.text = "13-03-2000"
+        tf.text = selectedBirthday
         return tf
     }()
     
@@ -106,7 +117,7 @@ class FTSetProfileInfoViewController: UIViewController {
         button.layer.cornerRadius = 20
         button.setDimensions(width: 100, height: 50)
         
-//        button.addTarget(self, action: #selector(registerButtonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(saveButtonPressed), for: .touchUpInside)
 
         
         return button
@@ -136,7 +147,7 @@ class FTSetProfileInfoViewController: UIViewController {
         button.layer.cornerRadius = 20
         button.setDimensions(width: 100, height: 50)
         
-//        button.addTarget(self, action: #selector(registerButtonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(deleteButtonPressed), for: .touchUpInside)
 
         
         return button
@@ -164,6 +175,66 @@ class FTSetProfileInfoViewController: UIViewController {
     @objc func setPasswordButtonPressed() {
         let vc = FTSetPasswordViewController()
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func deleteButtonPressed() {
+        let user = Auth.auth().currentUser
+
+        user?.delete { error in
+          if let error = error {
+              print("DEBUG: Error is \(error.localizedDescription)")
+          } else {
+            // Account deleted.
+              
+              print("Account Deleted")
+              
+              let controller = FTLoginScreenViewController()
+              controller.delegate = self.tabBarController as? FTMainTabBarControllerViewController
+              let nav = UINavigationController(rootViewController: controller)
+              nav.modalPresentationStyle = .fullScreen
+              self.present(nav, animated: true, completion: nil)
+          }
+        }
+    }
+    
+    @objc func saveButtonPressed() {
+        
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        
+        
+        guard let name = nameTextField.text?.trimmingCharacters(in: .whitespaces).lowercased(),
+              !name.isEmpty else {
+            showMessage(withTitle: "İsim", message: "Lütfen isminizi girin")
+            return
+        }
+        
+        guard let surname = surnameTextField.text?.trimmingCharacters(in: .whitespaces).lowercased(),
+              !surname.isEmpty else {
+            showMessage(withTitle: "Soyad", message: "Lütfen soyadınızı girin")
+            return
+        }
+        
+        guard let birthday = birthdayTextField.text?.trimmingCharacters(in: .whitespaces).lowercased(),
+              !birthday.isEmpty else {
+            showMessage(withTitle: "Soyad", message: "Lütfen soyadınızı girin")
+            return
+        }
+        
+        let values = ["name": name,
+                      "surname": surname,
+                      "birthday":  birthday] as [String : Any]
+        
+        showLoader(true)
+
+        COLLECTION_USERS.document(uid).updateData(values) { err in
+            if let error = err {
+                self.showMessage(withTitle: "Hata", message: error.localizedDescription)
+                self.showLoader(false)
+            }
+            
+            self.showLoader(false)
+        }
+        
     }
     
     func showDatePicker(){

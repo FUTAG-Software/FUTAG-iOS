@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseFirestore
 
 struct AuthCredentials {
     let email: String
@@ -54,9 +55,16 @@ struct AuthService {
     }
     
     
+
+
+    
+    
     static func resetPassword(withEmail email: String, completion: SendPasswordResetCallback?) {
         Auth.auth().sendPasswordReset(withEmail: email, completion: completion)
     }
+    
 }
+
+
 
 

@@ -146,12 +146,22 @@ class FTProfileScreenViewController: UIViewController {
     //MARK: - API
     
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+        print("xcxcxc")
+        fetcUser()
+    }
+    
     
     
     //MARK: - Selector
     
     @objc func setProfileInfoTapped() {
         let vc = FTSetProfileInfoViewController()
+        vc.selectedImage = user.profileImage
+        vc.selectedName = user.name
+        vc.selectedSurname = user.surname
+        vc.selectedBirthday = user.birthday
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -174,8 +184,18 @@ class FTProfileScreenViewController: UIViewController {
     
     //MARK: - Helper
     
+    func fetcUser() {
+        UserService.fetchUser { user in
+            self.user = user
+            self.emailTextField.text = user.email
+            self.birthdayTextField.text = user.birthday
+            self.profileImageView.sd_setImage(with: user.profileImage, completed: nil)
+            self.nameLabel.text = "\(user.name) \(user.surname)"
+            
+        }
+    }
+    
     func configureUserInfo() {
-        navigationItem.title = user.name
         birthdayTextField.text = user.birthday
         emailTextField.text = user.email
         nameLabel.text = "\(user.name) \(user.surname)"

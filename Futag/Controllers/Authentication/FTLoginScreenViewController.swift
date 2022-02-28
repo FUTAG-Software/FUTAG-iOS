@@ -184,12 +184,21 @@ class FTLoginScreenViewController: UIViewController {
         
         print("xyxy")
         
-        guard let email = emailTextField.text?.lowercased() else { return }
-        guard let password = passwordTextField.text else { return }
+        guard let email = emailTextField.text?.trimmingCharacters(in: .whitespaces).lowercased(),
+              !email.isEmpty else {
+            showMessage(withTitle: "Email", message: "Lütfen email adresinizi girin")
+            return
+        }
+        guard let password = passwordTextField.text?.trimmingCharacters(in: .whitespaces).lowercased(),
+              !password.isEmpty else {
+            showMessage(withTitle: "Parola", message: "Lütfen parolanızı girin")
+            return
+        }
         
         AuthService.shared.logUserIn(withEmail: email, password: password) { (result, error) in
             if let error = error {
                 print("DEBUG: Failed to log user in \(error.localizedDescription)")
+                self.showMessage(withTitle: "Hata", message: error.localizedDescription)
                 return
             }
             

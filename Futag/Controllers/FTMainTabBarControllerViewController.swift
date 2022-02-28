@@ -39,7 +39,7 @@ class FTMainTabBarControllerViewController: UITabBarController {
         
         navigationController?.navigationBar.isHidden = true
         
-//        logOut()
+        
         
         
         
