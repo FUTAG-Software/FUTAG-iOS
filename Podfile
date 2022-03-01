@@ -20,6 +20,7 @@ target 'Futag' do
   pod 'IQKeyboardManagerSwift'
   pod 'SwiftSoup'
   pod 'JGProgressHUD'
+  pod 'Firebase/Messaging'
 
 
   target 'FutagTests' do

@@ -6,6 +6,10 @@
 //
 
 import UIKit
+import FirebaseMessaging
+import FirebaseFirestore
+import Firebase
+
 
 protocol AuthenticationDelegate: class {
     func authenticationDidComplete()
@@ -107,28 +111,12 @@ class FTLoginScreenViewController: UIViewController {
         return button
     }()
     
-    private let haveAccountLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Hesabın yok mu?"
-        label.font = UIFont.systemFont(ofSize: 13, weight: .light)
-        label.textColor = .label
-        label.numberOfLines = 2
-        
-        return label
-    }()
-    
-    private let logInButton: UIButton = {
-        let button = UIButton()
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        button.setTitleColor(.clubYellow, for: .normal)
-        button.setTitle("Kayıt Ol", for: .normal)
-        button.setDimensions(width: 80, height: 30)
-        
+    private let dontHaveAccountButton: UIButton = {
+        let button = Utilities().attributedButton("Hesabın yok mu?", " Kayıt Ol")
         button.addTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)
-        
-        
         return button
     }()
+    
     
     private lazy var forgotPassLabel: UILabel = {
         let label = UILabel()
@@ -151,6 +139,16 @@ class FTLoginScreenViewController: UIViewController {
         iv.tintColor = .lightGray
         
         return iv
+    }()
+    
+    private lazy var loginContainer: UIView = {
+        let view = UIView()
+        
+        view.backgroundColor = .yellow
+        view.setDimensions(width: 180, height: 40)
+        
+        
+        return view
     }()
     
     
@@ -200,6 +198,14 @@ class FTLoginScreenViewController: UIViewController {
                 print("DEBUG: Failed to log user in \(error.localizedDescription)")
                 self.showMessage(withTitle: "Hata", message: error.localizedDescription)
                 return
+            }
+            
+            Messaging.messaging().subscribe(toTopic: "food_notification") { error in
+              print("Subscribed to food_notification topic")
+            }
+            
+            Messaging.messaging().subscribe(toTopic: "futag_notification") { error in
+              print("Subscribed to futag_notification topic")
             }
             
             self.delegate?.authenticationDidComplete()
@@ -291,11 +297,11 @@ class FTLoginScreenViewController: UIViewController {
         scrollSubView.addSubview(logoImageView)
         logoImageView.centerX(inView: scrollSubView, topAnchor: forgotPassLabel.bottomAnchor, paddingTop: 20)
         
-        scrollSubView.addSubview(haveAccountLabel)
-        haveAccountLabel.anchor(top: logoImageView.bottomAnchor, left: registerButton.leftAnchor,bottom: scrollSubView.bottomAnchor, paddingTop: 20, paddingLeft: 70, paddingBottom: 20)
-
-        scrollSubView.addSubview(logInButton)
-        logInButton.anchor(top: logoImageView.bottomAnchor, left: haveAccountLabel.rightAnchor, bottom: scrollSubView.bottomAnchor, paddingTop: 20, paddingLeft: -5, paddingBottom: 20)
+        scrollSubView.addSubview(dontHaveAccountButton)
+        dontHaveAccountButton.anchor(top: logoImageView.bottomAnchor, left: scrollSubView.leftAnchor,
+                                     bottom: scrollSubView.safeAreaLayoutGuide.bottomAnchor,
+                                     right: scrollSubView.rightAnchor, paddingTop: 10, paddingLeft: 40, paddingBottom: 20, paddingRight: 40)
+        
         
     }
     

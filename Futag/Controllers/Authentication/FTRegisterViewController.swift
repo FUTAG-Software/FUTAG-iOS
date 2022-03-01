@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import FirebaseMessaging
+import FirebaseFirestore
+import Firebase
 
 class FTRegisterViewController: UIViewController {
 
@@ -152,28 +155,12 @@ class FTRegisterViewController: UIViewController {
         return button
     }()
     
-    private let haveAccountLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Zaten Hesabın Var Mı ?"
-        label.font = UIFont.systemFont(ofSize: 13, weight: .light)
-        label.textColor = .lightGray
-        label.numberOfLines = 2
-        
-        return label
-    }()
-    
-    private let logInButton: UIButton = {
-        let button = UIButton()
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        button.setTitleColor(.clubYellow, for: .normal)
-        button.setTitle("Giriş Yap", for: .normal)
-        button.setDimensions(width: 80, height: 30)
-        
+    private let loginAccountButton: UIButton = {
+        let button = Utilities().attributedButton("Zaten Hesabın Var Mı?", " Giriş Yap")
         button.addTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)
-        
-        
         return button
     }()
+    
     
     
     //MARK: - Lifecycle
@@ -291,11 +278,10 @@ class FTRegisterViewController: UIViewController {
         scrollSubView.addSubview(registerButton)
         registerButton.anchor(top: tfStack.bottomAnchor, left: scrollSubView.leftAnchor, right: scrollSubView.rightAnchor, paddingTop: 40, paddingLeft: 40,  paddingRight: 40, height: 50)
         
-        scrollSubView.addSubview(haveAccountLabel)
-        haveAccountLabel.anchor(top: registerButton.bottomAnchor, left: registerButton.leftAnchor,bottom: scrollSubView.bottomAnchor, paddingTop: 30, paddingLeft: 50, paddingBottom: 20)
-
-        scrollSubView.addSubview(logInButton)
-        logInButton.anchor(top: registerButton.bottomAnchor, left: haveAccountLabel.rightAnchor, bottom: scrollSubView.bottomAnchor, paddingTop: 27.5, paddingLeft: -5, paddingBottom: 20)
+        scrollSubView.addSubview(loginAccountButton)
+        loginAccountButton.anchor(top: registerButton.bottomAnchor, left: scrollSubView.leftAnchor,
+                                     bottom: scrollSubView.safeAreaLayoutGuide.bottomAnchor,
+                                     right: scrollSubView.rightAnchor, paddingTop: 20, paddingLeft: 40, paddingBottom: 20, paddingRight: 40)
         
     }
     
@@ -339,6 +325,12 @@ class FTRegisterViewController: UIViewController {
             showMessage(withTitle: "Doğum Günü", message: "Lütfen doğum gününüzü girin")
             return
         }
+        
+        if passwordTextField.text != passWordAgainTextField.text {
+            showMessage(withTitle: "Hata", message: "Girdiğiniz parolalar eşleşmiyor")
+            
+            return
+        }
 
 
 
@@ -357,6 +349,13 @@ class FTRegisterViewController: UIViewController {
             print("DEBUG: Successfuly registered user with firestore..")
             self.showLoader(false)
             
+            Messaging.messaging().subscribe(toTopic: "food_notification") { error in
+              print("Subscribed to food_notification topic")
+            }
+            
+            Messaging.messaging().subscribe(toTopic: "futag_notification") { error in
+              print("Subscribed to futag_notification topic")
+            }
             
             self.delegate?.authenticationDidComplete()
                 
