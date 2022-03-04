@@ -37,6 +37,16 @@ class FTExtrasScreenViewController: UIViewController {
         return coll
     }()
     
+    private let copyRightLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 13, weight: .light)
+        label.text = "Copyright © 2022 by Furkan Erdogan"
+        label.textColor = .label
+        label.textAlignment = .center
+        
+        return label
+    }()
+    
     
     
     
@@ -77,6 +87,9 @@ class FTExtrasScreenViewController: UIViewController {
         
         view.addSubview(collectionView)
         collectionView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
+        
+        view.addSubview(copyRightLabel)
+        copyRightLabel.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor)
         
         
         

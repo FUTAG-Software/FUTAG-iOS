@@ -71,7 +71,6 @@ class FTDepartmentsScreenViewController: UIViewController {
             print("something else")
         }
         
-        
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(FTDeparmentsCell.self, forCellWithReuseIdentifier:FTDeparmentsCell.reuseIdentifier)
@@ -104,7 +103,6 @@ class FTDepartmentsScreenViewController: UIViewController {
         collectionView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20)
         
         
-        
     }
     
     
@@ -112,12 +110,12 @@ class FTDepartmentsScreenViewController: UIViewController {
     
     func getData() {
         
-        let externalAffairs = Department(name: "Dış İlişkiler Ve Organizasyon", number: 1, imageName: "denemeImage", content: "merhaba benim adım algoritma bir problemin çözüm kümesiimdir. Sonuç dayımdır yanlış yazdım sonlu sayı dayımdır.", logoName: "dis")
-        let innovation = Department(name: "Girişimcilik Ve İnovasyon Birimi", number: 2, imageName: "", content: "", logoName: "girisimcilik")
-        let media = Department(name: "Medya Ve Tasarım Birimi", number: 2, imageName: "", content: "", logoName: "medya")
-        let project = Department(name: "Proje Ve Arge Birimi", number: 1, imageName: "", content: "", logoName: "proje")
-        let social = Department(name: "Sosyal Sorumluluk Ve Faaliyet Birimi", number: 1, imageName: "", content: "", logoName: "ssf")
-        let software = Department(name: "Yazılım Birimi", number: 1, imageName: "", content: "", logoName: "yazilim")
+        let externalAffairs = Department(name: "Dış İlişkiler Ve Organizasyon", number: 1, imageName: "DIS-ILISKILER-birimi", content: "Birimimizin amacı; ulusal ve uluslararası kuruluşlar için üniversite temsilciliğini üstlenmek ve düzenlediğimiz etkinlikler için yetkili kişiler ile iletişime geçmektir. Topluluğumuz adına dışarıyla bağlantı sağlamamızın yanı sıra, sponsorluk ve reklam konularında da çalışmalar yürütmekteyiz.\n\nBirim olarak, ileriki dönemlerde topluluğumuzu ülkemizin önde gelen toplulukları ile aynı kategoride görmek ve üniversitemizi en güzel şekilde temsil etmeyi sağlamayı hedeflemekteyiz.", logoName: "dis")
+        let innovation = Department(name: "Girişimcilik Ve İnovasyon Birimi", number: 2, imageName: "GIVIN-birimi", content: "Birim olarak amacımız düzenleyeceğimiz etkinlik ve eğitimlerle üyelerimizin iletişim yeteneklerini geliştirerek takım çalışması yöntemi ile yeni ürün ve fikir oluşturmalarına destek olmaktır.\n\nFikirlerin uygulama ve pratik ile gerçek değerlerine ulaştıkları bilincindeyiz.Girişimcilik ve İnovasyon birimi olarak, ekip arkadaşlarımızın girişimcilik ekosistemine dahil olmalarını sağlamak amacıyla fikirlerini destekleyerek üretme aşamalarına getirmelerini hedeflemekteyiz.", logoName: "girisimcilik")
+        let media = Department(name: "Medya Ve Tasarım Birimi", number: 2, imageName: "MEDYA-birimi", content: "Birimimizin amacı; topluluğumuzun ihtiyaç duyduğu reklam çalışmalarını yürütmek ve tanıtımımıza katkı sağlamaktır. Topluluğumuz tanıtımının yanı sıra sosyal medya yöneticiliği ve fotoğrafçılık alanında çalışmalar yürütmekteyiz.\n\nBirim olarak, ileriki dönemlerde topluluğumuzun sosyal medyadaki tanıtımlarını arttırarak hedef kitlemizi büyütmeyi amaçlamaktayız.", logoName: "medya")
+        let project = Department(name: "Proje Ve Arge Birimi", number: 1, imageName: "PROJE-birimi", content: "Birim olarak amacımız üretmeye ve geliştirmeye hevesli ekip arkadaşlarımızla birlikte projeler tasarlayıp bu projeleri istenilen alanda desteklemektir.\n\nİster teknik ister sosyal projeler olsun gelişmekte olan teknolojiye ve sosyal dünyaya uyum sağlamak, bu projeleri geliştirirken aynı zamanda bireysel yeteneklerimizi de geliştirmek öncelikli hedeflerimizdir.", logoName: "proje")
+        let social = Department(name: "Sosyal Sorumluluk Ve Faaliyet Birimi", number: 1, imageName: "SSF-birimi", content: "Birim olarak: Etrafımızda bulunan çocuk, genç ve yaşlı her bir bireyin daha mutlu ve huzurlu bir hayat geçirmesi için çalışıyoruz. Aynı doğayı paylaştığımız bütün canlılara daha güvenilir bir yaşam alanı sağlamak hepimizin insanlık görevidir.\n\nBizler hep beraber çevremizi ve geleceğimizi daha güzel, mutlu ve huzurlu yapmayı hedeflemekteyiz.", logoName: "ssf")
+        let software = Department(name: "Yazılım Birimi", number: 1, imageName: "YAZILIM-birimi", content: "Birim olarak amacımız topluluğumuzun yazılım konusunda ihtiyacı olan ürünlerin tasarım ve mimarisini yapmaktır. Ortaya çıkarılan ürünlerin dışında ekip arkadaşlarımıza dışarıdan sağlanan uzman desteği ile çeşitli eğitimler düzenlenmektedir.\n\nDijital dönüşüm sürecine uyum sağlamanın önemini bilerek, çalışmaya devam ediyor ve her yeni dönemde inovatif ürünler ortaya koymayı hedefliyoruz.", logoName: "yazilim")
         
         departments.append(externalAffairs)
         departments.append(innovation)

@@ -6,6 +6,10 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
+
+var isPasswordLogIn = false
 
 class FTSetPasswordViewController: UIViewController {
 
@@ -89,7 +93,7 @@ class FTSetPasswordViewController: UIViewController {
         button.layer.cornerRadius = 20
         button.setDimensions(width: 100, height: 50)
         
-//        button.addTarget(self, action: #selector(registerButtonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(setPassButtonPressed), for: .touchUpInside)
 
         
         return button
@@ -137,6 +141,53 @@ class FTSetPasswordViewController: UIViewController {
     @objc func setProfileInfoTapped() {
         let vc = FTSetProfileInfoViewController()
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func setPassButtonPressed() {
+        
+
+        // Prompt the user to re-provide their sign-in credentials
+        
+        guard let password = newPasswordTextField.text else {return}
+        
+        guard let count = newPasswordTextField.text?.count else {return}
+        
+        if count < 6 {
+            showMessage(withTitle: "Hata", message: "Girdiğiniz parola 6 karakterden fazla olmalıdır!")
+            return
+        }
+        
+        if newPasswordTextField.text != newPassWordAgainTextField.text {
+            showMessage(withTitle: "Hata", message: "Girdiğiniz parolalar eşleşmiyor")
+            
+            return
+        }
+
+        Auth.auth().currentUser?.updatePassword(to: password, completion: { err in
+            if let error = err {
+                print("DEBUG: failed \(error.localizedDescription)")
+                
+                do {
+                    try Auth.auth().signOut()
+                    let controller = FTLoginScreenViewController()
+                    controller.delegate = self.tabBarController as? FTMainTabBarControllerViewController
+                    let nav = UINavigationController(rootViewController: controller)
+                    nav.modalPresentationStyle = .fullScreen
+                    isPasswordLogIn = true
+                    
+                    self.present(nav, animated: true, completion: nil)
+                    
+                    
+                } catch {
+                    print("DEBUG: Failed to log user out")
+                }
+                
+            } else {
+                self.showMessage(withTitle: "Başarılı", message: "Şifreniz başarılı bir şekilde değiştirilmiştir.")
+                
+            }
+        })
+        
     }
     
     

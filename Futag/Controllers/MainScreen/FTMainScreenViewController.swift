@@ -130,6 +130,8 @@ class FTMainScreenViewController: UIViewController {
     //MARK: - API
     
     func fetchData() {
+        
+        
         Service.shared.fetchAdData { data in
             
             self.adList = data

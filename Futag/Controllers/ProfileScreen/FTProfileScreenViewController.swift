@@ -130,7 +130,7 @@ class FTProfileScreenViewController: UIViewController {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("init(coder:) has not been implementedd")
     }
     
     override func viewDidLoad() {
@@ -148,7 +148,6 @@ class FTProfileScreenViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        print("xcxcxc")
         fetcUser()
     }
     
@@ -235,8 +234,6 @@ class FTProfileScreenViewController: UIViewController {
         
         scrollSubView.addSubview(signOutButton)
         signOutButton.anchor(top: editProfileButton.bottomAnchor, left: scrollSubView.leftAnchor, bottom: scrollSubView.bottomAnchor, right: scrollSubView.rightAnchor, paddingTop: 20, paddingLeft: 10, paddingBottom: 60, paddingRight: 10, height: 120)
-        
-        
         
     }
 

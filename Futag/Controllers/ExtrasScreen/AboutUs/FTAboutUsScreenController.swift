@@ -19,7 +19,7 @@ class FTAboutUsScreenController: UIViewController {
     private lazy var headrImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.setDimensions(width: 250, height: 280)
-        imageView.image = UIImage(named: "denemeImage")
+        imageView.image = UIImage(named: "aboutUsImage")
         
         
         return imageView

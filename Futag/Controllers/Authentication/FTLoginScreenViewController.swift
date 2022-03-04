@@ -161,6 +161,12 @@ class FTLoginScreenViewController: UIViewController {
         
         self.configureUI()
         
+        if isPasswordLogIn == true {
+            self.showMessage(withTitle: "Hata", message: "Lütfen hesabınızı silmek için tekrar giriş yapın!")
+        }
+            
+        
+        
     }
     
     //MARK: - API
@@ -193,10 +199,13 @@ class FTLoginScreenViewController: UIViewController {
             return
         }
         
+        self.showLoader(true)
+        
         AuthService.shared.logUserIn(withEmail: email, password: password) { (result, error) in
             if let error = error {
                 print("DEBUG: Failed to log user in \(error.localizedDescription)")
                 self.showMessage(withTitle: "Hata", message: error.localizedDescription)
+                self.showLoader(false)
                 return
             }
             
@@ -207,6 +216,8 @@ class FTLoginScreenViewController: UIViewController {
             Messaging.messaging().subscribe(toTopic: "futag_notification") { error in
               print("Subscribed to futag_notification topic")
             }
+            
+            self.showLoader(false)
             
             self.delegate?.authenticationDidComplete()
             
