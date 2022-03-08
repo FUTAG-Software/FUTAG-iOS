@@ -132,6 +132,21 @@ class FTLoginScreenViewController: UIViewController {
         return label
     }()
     
+    private lazy var notLoginLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Giriş yapmadan devam et"
+        label.font = UIFont.systemFont(ofSize: 14, weight: .light)
+        label.textColor = .label
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(notLoginLabelTapped))
+                label.isUserInteractionEnabled = true
+                label.addGestureRecognizer(tap)
+        
+        return label
+    }()
+    
     private lazy var logoImageView: UIImageView = {
         let iv = UIImageView()
         iv.setDimensions(width: 150, height: 160)
@@ -225,8 +240,6 @@ class FTLoginScreenViewController: UIViewController {
         }
         
         
-       
-        
         
     }
     
@@ -240,6 +253,32 @@ class FTLoginScreenViewController: UIViewController {
         let controller = FTForgotPasswordViewController()
         controller.delegate = self
         navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc func notLoginLabelTapped() {
+        
+        let alert = UIAlertController(title: "Önemli", message: "Eğer kaydolmadan ya da giriş yapmadan devam edersen üyelerimize özel ödüllerden ve etkinlikliklerden yararlanamayacaksın :(", preferredStyle: UIAlertController.Style.alert)
+
+                // add an action (button)
+        alert.addAction(UIAlertAction(title: "Devam et", style: UIAlertAction.Style.default, handler: { alert in
+            print("Basıldı")
+            UserDefaults.standard.set(true, forKey: "isLogin")
+            UserDefaults.standard.synchronize()
+
+            print("xyxyxy")
+
+            self.dismiss(animated: true, completion: nil)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Giriş Yap", style: UIAlertAction.Style.default, handler: { alert in
+            print("Basıldı")
+            
+        }))
+
+        
+        self.present(alert, animated: true, completion: nil)
+        
+
     }
     
     @objc func textDidChange(sender: UITextField) {
@@ -310,8 +349,10 @@ class FTLoginScreenViewController: UIViewController {
         
         scrollSubView.addSubview(dontHaveAccountButton)
         dontHaveAccountButton.anchor(top: logoImageView.bottomAnchor, left: scrollSubView.leftAnchor,
-                                     bottom: scrollSubView.safeAreaLayoutGuide.bottomAnchor,
                                      right: scrollSubView.rightAnchor, paddingTop: 10, paddingLeft: 40, paddingBottom: 20, paddingRight: 40)
+        
+        scrollSubView.addSubview(notLoginLabel)
+        notLoginLabel.anchor(top: dontHaveAccountButton.bottomAnchor, left: scrollSubView.leftAnchor, bottom: scrollSubView.safeAreaLayoutGuide.bottomAnchor, right: scrollSubView.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 20, paddingRight: 20)
         
         
     }

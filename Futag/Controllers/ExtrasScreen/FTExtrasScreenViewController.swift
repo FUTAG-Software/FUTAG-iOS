@@ -105,12 +105,17 @@ class FTExtrasScreenViewController: UIViewController {
         let feedBack = Extra(name: "Geri Bildirim", number: 2, imageName: "email")
         let infoUs = Extra(name: "Hakkımızda", number: 3, imageName: "info")
         let settings = Extra(name: "Ayarlar", number: 4, imageName: "setting")
+        let register = Extra(name: "Kayıt Ol / Giriş Yap", number: 5, imageName: "user-interface")
         
         extras.append(departments)
         extras.append(biziOyla)
         extras.append(feedBack)
         extras.append(infoUs)
         extras.append(settings)
+        
+        if UserDefaults.standard.bool(forKey: "isLogin") == true {
+            extras.append(register)
+        }
         
     }
 
@@ -169,7 +174,19 @@ extension FTExtrasScreenViewController: UICollectionViewDelegate, UICollectionVi
             let vc = FTSettingsViewController()
             navigationController?.pushViewController(vc, animated: true)
             
+        } else if extras[indexPath.row].number == 5 {
+            
+            UserDefaults.standard.set(false, forKey: "isLogin")
+            UserDefaults.standard.synchronize()
+            
+            let controller = FTLoginScreenViewController()
+            controller.delegate = self.tabBarController as? FTMainTabBarControllerViewController
+            let nav = UINavigationController(rootViewController: controller)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true, completion: nil)
+            
         }
+        
         
         
     }

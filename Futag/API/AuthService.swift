@@ -15,7 +15,7 @@ struct AuthCredentials {
     let name: String
     let surname: String
     let profileImage: UIImage?
-    let birthday: String
+    let birthday: String?
 }
 
 struct AuthService {
@@ -43,7 +43,7 @@ struct AuthService {
                               "surname": credentials.surname,
                               "profileImage": imageUrl,
                               "profileImageName": fileName ?? "",
-                              "birthday": credentials.birthday,
+                              "birthday": credentials.birthday ?? "",
                               "registrationTime": Date(),
                               "userUid": uid
                 ] as [String : Any]

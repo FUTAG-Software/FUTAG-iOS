@@ -13,6 +13,8 @@ class FTMainTabBarControllerViewController: UITabBarController {
     
     // MARK: - Properties
     
+    
+    
     var user: User? {
         
         didSet {
@@ -33,18 +35,33 @@ class FTMainTabBarControllerViewController: UITabBarController {
         
         configureUI()
         
+        if UserDefaults.standard.bool(forKey: "isLogin") == false {
+            checkIfUserLoggedIn()
+            fetcUser()
+            
+        } else {
+            configureViewControllers2()
+        }
         
-        checkIfUserLoggedIn()
-        fetcUser()
+        
+        
         UITabBar.appearance().tintColor = .clubYellow
         
         navigationController?.navigationBar.isHidden = true
         
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        configureUI()
         
-        
-        
-        
+        if UserDefaults.standard.bool(forKey: "isLogin") == false {
+            checkIfUserLoggedIn()
+            fetcUser()
+            
+        } else {
+            configureViewControllers2()
+        }
     }
     
    
@@ -109,22 +126,68 @@ class FTMainTabBarControllerViewController: UITabBarController {
     
     func configureViewControllers(withUser user: User) {
         
-        let blog = FTBlogScreenViewController()
-        let nav1 = templateNavigationController(image: UIImage(systemName: "newspaper.fill"), title: "Blog", rootViewController: blog)
         
-        let events = FTEventsScreenViewController()
-        let nav2 = templateNavigationController(image: UIImage(systemName: "calendar.badge.clock"), title: "Etkinlikler", rootViewController: events)
         
-        let main = FTMainScreenViewController()
-        let nav3 = templateNavigationController(image: UIImage(systemName: "house.fill"), title: "Ana Sayfa", rootViewController: main)
+        if UserDefaults.standard.bool(forKey: "isLogin") == false {
+            let blog = FTBlogScreenViewController()
+            let nav1 = templateNavigationController(image: UIImage(systemName: "newspaper.fill"), title: "Blog", rootViewController: blog)
+            
+            let events = FTEventsScreenViewController()
+            let nav2 = templateNavigationController(image: UIImage(systemName: "calendar.badge.clock"), title: "Etkinlikler", rootViewController: events)
+            
+            let main = FTMainScreenViewController()
+            let nav3 = templateNavigationController(image: UIImage(systemName: "house.fill"), title: "Ana Sayfa", rootViewController: main)
+            
+            let profile = FTProfileScreenViewController(user: user)
+            let nav4 = templateNavigationController(image: UIImage(systemName: "person.fill"), title: "Profil", rootViewController: profile)
+            
+            let extras = FTExtrasScreenViewController()
+            let nav5 = templateNavigationController(image: UIImage(systemName: "increase.indent"), title: "Daha Fazla", rootViewController: extras)
+            
+            viewControllers = [nav1, nav2, nav3, nav4, nav5]
+            
+        } else {
+            
+            let blog = FTBlogScreenViewController()
+            let nav1 = templateNavigationController(image: UIImage(systemName: "newspaper.fill"), title: "Blog", rootViewController: blog)
+            
+            let events = FTEventsScreenViewController()
+            let nav2 = templateNavigationController(image: UIImage(systemName: "calendar.badge.clock"), title: "Etkinlikler", rootViewController: events)
+            
+            let main = FTMainScreenViewController()
+            let nav3 = templateNavigationController(image: UIImage(systemName: "house.fill"), title: "Ana Sayfa", rootViewController: main)
+            
+            let extras = FTExtrasScreenViewController()
+            let nav5 = templateNavigationController(image: UIImage(systemName: "increase.indent"), title: "Daha Fazla", rootViewController: extras)
+            
+            viewControllers = [nav1, nav2, nav3, nav5]
+            
+        }
 
-        let profile = FTProfileScreenViewController(user: user)
-        let nav4 = templateNavigationController(image: UIImage(systemName: "person.fill"), title: "Profil", rootViewController: profile)
         
-        let extras = FTExtrasScreenViewController()
-        let nav5 = templateNavigationController(image: UIImage(systemName: "increase.indent"), title: "Daha Fazla", rootViewController: extras)
         
-        viewControllers = [nav1, nav2, nav3, nav4, nav5]
+    }
+    
+    func configureViewControllers2() {
+        
+            
+            let blog = FTBlogScreenViewController()
+            let nav1 = templateNavigationController(image: UIImage(systemName: "newspaper.fill"), title: "Blog", rootViewController: blog)
+            
+            let events = FTEventsScreenViewController()
+            let nav2 = templateNavigationController(image: UIImage(systemName: "calendar.badge.clock"), title: "Etkinlikler", rootViewController: events)
+            
+            let main = FTMainScreenViewController()
+            let nav3 = templateNavigationController(image: UIImage(systemName: "house.fill"), title: "Ana Sayfa", rootViewController: main)
+            
+            let extras = FTExtrasScreenViewController()
+            let nav5 = templateNavigationController(image: UIImage(systemName: "increase.indent"), title: "Daha Fazla", rootViewController: extras)
+            
+            viewControllers = [nav1, nav2, nav3, nav5]
+            
+        
+
+        
         
     }
     

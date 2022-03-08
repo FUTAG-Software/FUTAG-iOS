@@ -42,10 +42,9 @@ class FTProfileScreenViewController: UIViewController {
     private lazy var profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.setDimensions(width: 150, height: 150)
-        iv.image = UIImage(named: "plus_photo")
-        iv.tintColor = .clubGray
         iv.layer.cornerRadius = 75
         iv.layer.masksToBounds = true
+        iv.backgroundColor = .red
         
         
         

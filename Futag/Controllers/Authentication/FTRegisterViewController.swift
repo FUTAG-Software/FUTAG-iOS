@@ -289,13 +289,10 @@ class FTRegisterViewController: UIViewController {
     @objc func registerButtonPressed() {
         
         
-        let profileImage = profileImage
+        var profileImage = profileImage
         if profileImage == nil {
-            showMessage(withTitle: "Profil Fotoğrafı", message: "Lütfen bir profil fotoğrafı seçin")
             
-            return
-            
-            
+            profileImage = UIImage(named: "userDefaultProfile1")
         }
         
         guard let name = nameTextField.text?.trimmingCharacters(in: .whitespaces),
@@ -320,11 +317,7 @@ class FTRegisterViewController: UIViewController {
             return
         }
        
-        guard let birhday = birthdayTextField.text?.trimmingCharacters(in: .whitespaces),
-              !birhday.isEmpty else {
-            showMessage(withTitle: "Doğum Günü", message: "Lütfen doğum gününüzü girin")
-            return
-        }
+        let birhday = birthdayTextField.text
         
         if passwordTextField.text != passWordAgainTextField.text {
             showMessage(withTitle: "Hata", message: "Girdiğiniz parolalar eşleşmiyor")
