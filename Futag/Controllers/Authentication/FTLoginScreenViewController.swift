@@ -177,6 +177,10 @@ class FTLoginScreenViewController: UIViewController {
         self.configureUI()
         
         if isPasswordLogIn == true {
+            self.showMessage(withTitle: "Hata", message: "Lütfen şifrenizi değiştirmek için tekrar giriş yapın!")
+        }
+        
+        if isDeleteAcount == true {
             self.showMessage(withTitle: "Hata", message: "Lütfen hesabınızı silmek için tekrar giriş yapın!")
         }
             

@@ -96,6 +96,8 @@ class FTBlogScreenViewController: UIViewController {
     
     func configureUI() {
         
+        
+        
         self.title = "Blog"
         navigationController?.navigationBar.prefersLargeTitles = true
         

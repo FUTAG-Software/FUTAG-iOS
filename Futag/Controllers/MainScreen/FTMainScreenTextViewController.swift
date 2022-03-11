@@ -63,20 +63,9 @@ class FTMainScreenTextViewController: UIViewController {
     private lazy var contentTextView: UILabel = {
        let label = UILabel()
        label.textColor = .label
-       label.text = selectedContent
+       label.text = selectedContent?.withoutHtmlTags
        label.numberOfLines = .max
         
-        let formattedString = selectedContent!
-                                .htmlAttributedString()
-            .with(font:UIFont.systemFont(ofSize: 16, weight: .semibold))
-        
-        let attributes: [NSAttributedString.Key: AnyObject] =
-                          [NSAttributedString.Key.foregroundColor: UIColor.label]
-        
-        formattedString.addAttributes(attributes,
-                                      range: NSRange.init(location: 0, length: formattedString.length ))
-        
-        label.attributedText = formattedString
        
        return label
    }()

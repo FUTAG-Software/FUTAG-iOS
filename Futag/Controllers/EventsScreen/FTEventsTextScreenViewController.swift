@@ -84,7 +84,7 @@ class FTEventsTextScreenViewController: UIViewController {
        label.numberOfLines = .max
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         
-        label.text = selectedDetail2
+        label.text = selectedDetail2?.withoutHtmlTags
         
        
        return label

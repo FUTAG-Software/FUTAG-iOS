@@ -16,6 +16,28 @@ class FTDepartmentInfoViewController: UIViewController {
     var selectedImage: String?
     var selectedContent: String?
     
+    private lazy var scroolView: UIScrollView = {
+        let sc = UIScrollView(frame: .zero)
+        sc.backgroundColor = .systemBackground
+        sc.contentSize.width = self.view.frame.width
+        sc.frame = self.view.bounds
+        sc.autoresizingMask = .flexibleHeight
+        sc.showsHorizontalScrollIndicator = true
+        sc.bounces = true
+        
+        return sc
+    }()
+    
+    private lazy var scrollSubView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemBackground
+        
+        
+        return view
+        
+        
+    }()
+    
     private lazy var headrImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.setDimensions(width: 250, height: 280)
@@ -76,11 +98,17 @@ class FTDepartmentInfoViewController: UIViewController {
         view.addSubview(headrImageView)
         headrImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor)
         
-        view.addSubview(titleLabel)
-        titleLabel.anchor(top: headrImageView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingRight: 20)
+        view.addSubview(scroolView)
+        scroolView.anchor(top: headrImageView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0)
         
-        view.addSubview(contentTextView)
-        contentTextView.anchor(top: titleLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingRight: 20)
+        scroolView.addSubview(scrollSubView)
+        scrollSubView.anchor(top: scroolView.topAnchor, left: scroolView.leftAnchor, bottom: scroolView.bottomAnchor, width: view.frame.size.width)
+        
+        scrollSubView.addSubview(titleLabel)
+        titleLabel.anchor(top: scrollSubView.topAnchor, left: scrollSubView.leftAnchor, paddingTop: 15, paddingLeft: 10)
+        
+        scrollSubView.addSubview(contentTextView)
+        contentTextView.anchor(top: titleLabel.bottomAnchor, left: scrollSubView.leftAnchor, bottom: scrollSubView.bottomAnchor, right: scrollSubView.rightAnchor, paddingTop: 20, paddingLeft: 10, paddingBottom: 20, paddingRight: 10)
         
     }
     

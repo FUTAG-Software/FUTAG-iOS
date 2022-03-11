@@ -44,7 +44,7 @@ class FTProfileScreenViewController: UIViewController {
         iv.setDimensions(width: 150, height: 150)
         iv.layer.cornerRadius = 75
         iv.layer.masksToBounds = true
-        iv.backgroundColor = .red
+        iv.backgroundColor = .systemBackground
         
         
         

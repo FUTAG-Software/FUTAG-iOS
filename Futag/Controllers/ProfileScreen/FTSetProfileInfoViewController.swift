@@ -9,6 +9,9 @@ import UIKit
 import SDWebImage
 import FirebaseFirestore
 import Firebase
+import AVFoundation
+
+var isDeleteAcount = false
 
 class FTSetProfileInfoViewController: UIViewController {
 
@@ -179,14 +182,35 @@ class FTSetProfileInfoViewController: UIViewController {
     
     @objc func deleteButtonPressed() {
         let user = Auth.auth().currentUser
+        
+        showLoader(true)
+        
 
         user?.delete { error in
           if let error = error {
               print("DEBUG: Error is \(error.localizedDescription)")
+              
+              do {
+                  try Auth.auth().signOut()
+                  let controller = FTLoginScreenViewController()
+                  controller.delegate = self.tabBarController as? FTMainTabBarControllerViewController
+                  let nav = UINavigationController(rootViewController: controller)
+                  nav.modalPresentationStyle = .fullScreen
+                  isDeleteAcount = true
+                  
+                  self.present(nav, animated: true, completion: nil)
+                  
+                  
+              } catch {
+                  print("DEBUG: Failed to log user out")
+              }
+              
           } else {
             // Account deleted.
               
               print("Account Deleted")
+              
+              self.showLoader(false)
               
               let controller = FTLoginScreenViewController()
               controller.delegate = self.tabBarController as? FTMainTabBarControllerViewController

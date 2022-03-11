@@ -11,6 +11,7 @@ import FirebaseFirestore
 
 var isPasswordLogIn = false
 
+
 class FTSetPasswordViewController: UIViewController {
 
     //MARK: - Properties

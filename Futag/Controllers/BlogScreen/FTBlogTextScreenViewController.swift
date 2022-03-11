@@ -63,24 +63,10 @@ class FTBlogTextScreenViewController: UIViewController {
     
     private lazy var contentTextView: UILabel = {
        let label = UILabel()
-       label.textColor = .white
-       label.text = selectedContent
+       label.textColor = .label
+       label.text = selectedContent?.withoutHtmlTags
        label.numberOfLines = .max
         
-        let formattedString = selectedContent!
-                                .htmlAttributedString()
-            .with(font:UIFont.systemFont(ofSize: 16, weight: .semibold))
-        
-        let attributes: [NSAttributedString.Key: AnyObject] =
-                          [NSAttributedString.Key.foregroundColor: UIColor.label]
-        
-        formattedString.addAttributes(attributes,
-                                      range: NSRange.init(location: 0, length: formattedString.length ))
-        
-        
-        
-        
-        label.attributedText = formattedString
        
        return label
    }()
@@ -98,6 +84,7 @@ class FTBlogTextScreenViewController: UIViewController {
         configureUI()
         
         
+        
     }
     
     //MARK: - API
@@ -108,6 +95,8 @@ class FTBlogTextScreenViewController: UIViewController {
     
     
     //MARK: - Helper
+    
+    
     
     func filterImgTag(text: String) -> String{
         return text.replacingOccurrences(of: "<img[^>]*>", with: "", options: String.CompareOptions.regularExpression)
@@ -156,5 +145,13 @@ extension String {
         }
 
         return attributedString.string
+    }
+}
+
+extension String {
+    var withoutHtmlTags: String {
+    return self.replacingOccurrences(of: "<[^>]+>", with: "", options:
+    .regularExpression, range: nil).replacingOccurrences(of: "&[^;]+;", with:
+    "", options:.regularExpression, range: nil)
     }
 }
