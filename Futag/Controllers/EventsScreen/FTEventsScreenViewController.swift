@@ -63,9 +63,12 @@ class FTEventsScreenViewController: UIViewController {
     //MARK: - API
     
     func fetchData() {
+        
+        self.showLoader(true)
         Service.shared.fetchEventData { data in
             
             self.eventList = data
+            self.showLoader(false)
             
         }
     }

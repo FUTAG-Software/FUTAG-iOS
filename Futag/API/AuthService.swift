@@ -63,6 +63,27 @@ struct AuthService {
         Auth.auth().sendPasswordReset(withEmail: email, completion: completion)
     }
     
+    func updateProfileImage(image: UIImage, completion: @escaping(URL?) -> Void) {
+           guard let imageData = image.jpegData(compressionQuality: 0.5) else { return }
+           guard let uid = Auth.auth().currentUser?.uid else { return }
+           let filename = NSUUID().uuidString
+           let ref = Storage.storage().reference(withPath: "/Images/\(filename)")
+        
+        print("Kullanıcı\(uid)")
+           
+           ref.putData(imageData, metadata: nil) { (meta, error) in
+               ref.downloadURL { (url, error) in
+                   guard let profileImageUrl = url?.absoluteString else { return }
+                   let values = ["profileImage": profileImageUrl,
+                                 "profileImageName": filename]
+                   
+                   COLLECTION_USERS.document(uid).updateData(values) { err in
+                       completion(url)
+                   }
+               }
+           }
+       }
+    
 }
 
 

@@ -38,9 +38,5 @@ struct ImageUploader {
         }
             
         
-        
-        
-        
-        
     }
 }

@@ -145,8 +145,11 @@ class FTMainScreenViewController: UIViewController {
     }
     
     func fetchPostData() {
+        self.showLoader(true)
         Service.shared.fetchPostData { data in
             self.posts = data
+            
+            self.showLoader(false)
         }
     }
     

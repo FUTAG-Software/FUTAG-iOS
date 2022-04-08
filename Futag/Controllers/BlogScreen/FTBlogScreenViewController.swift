@@ -82,8 +82,11 @@ class FTBlogScreenViewController: UIViewController {
     //MARK: - API
     
     func fetchData() {
+        
+        self.showLoader(true)
         Service.shared.fetchBlogData { blogData in
             self.blogs = blogData
+            self.showLoader(false)
         }
     }
     

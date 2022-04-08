@@ -17,6 +17,8 @@ class FTSetProfileInfoViewController: UIViewController {
 
     //MARK: - Properties
     
+    private let imagePicker = UIImagePickerController()
+    private var profileImage: UIImage?
     
     var selectedImage: URL?
     var selectedName: String?
@@ -45,6 +47,8 @@ class FTSetProfileInfoViewController: UIViewController {
         
     }()
     
+    
+    
    
     
     private lazy var profileImageView: UIImageView = {
@@ -54,6 +58,9 @@ class FTSetProfileInfoViewController: UIViewController {
         iv.tintColor = .clubGray
         iv.layer.cornerRadius = 75
         iv.layer.masksToBounds = true
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleAddProfilePhoto))
+            iv.isUserInteractionEnabled = true
+            iv.addGestureRecognizer(tapGestureRecognizer)
         
         
         
@@ -180,6 +187,10 @@ class FTSetProfileInfoViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    @objc func handleAddProfilePhoto() {
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
     @objc func deleteButtonPressed() {
         let user = Auth.auth().currentUser
         
@@ -261,6 +272,10 @@ class FTSetProfileInfoViewController: UIViewController {
         
     }
     
+    func setProfileImage() {
+        
+    }
+    
     func showDatePicker(){
         //Formate Date
         datePicker.datePickerMode = .date
@@ -297,6 +312,10 @@ class FTSetProfileInfoViewController: UIViewController {
     
     func configureUI() {
         
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        
+        
         self.title = "Profili Düzenle"
         navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -332,5 +351,39 @@ class FTSetProfileInfoViewController: UIViewController {
         
         
     }
+    
+    func updateProfileImage() {
+            guard let image = profileImage else { return }
+        
+        self.showLoader(true)
+            
+        AuthService.shared.updateProfileImage(image: image) { profileImageUrl in
+            self.showLoader(false)
+            }
+        }
 
+}
+
+extension FTSetProfileInfoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let profileImage = info[.editedImage] as? UIImage else { return }
+        self.profileImage = profileImage
+        
+        profileImageView.setDimensions(width: 150, height: 150)
+        profileImageView.layer.cornerRadius = 150 / 2
+        profileImageView.layer.masksToBounds = true
+        profileImageView.tintColor = .clubGray
+        profileImageView.layer.borderColor = UIColor.white.cgColor
+        
+        self.profileImageView.image = profileImage.withRenderingMode(.alwaysOriginal)
+        
+        
+        
+        dismiss(animated: true) {
+            print("XCXCXC")
+            self.updateProfileImage()
+        }
+    }
+    
 }

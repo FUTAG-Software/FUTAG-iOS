@@ -45,7 +45,7 @@ class FTEventsTextScreenViewController: UIViewController {
     
     private lazy var headrImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.setDimensions(width: 250, height: 220)
+        imageView.setDimensions(width: 250, height: 380)
         imageView.setImage(with: selectedImage ?? "")
         
         
@@ -111,11 +111,16 @@ class FTEventsTextScreenViewController: UIViewController {
     
     @objc func labelTapped() {
         
-        let controller = FTEventsWebViewScreenController()
-        controller.selectedLink = self.selectedLink
-        navigationController?.pushViewController(controller, animated: true)
+        if selectedLink == "no_link" {
+            self.showMessage(withTitle: "Üzgünüz", message: "Bu etkinliğin kayıt süresi dolmuş.")
+        } else {
+            if let url = URL(string: self.selectedLink ?? "https://www.futag.net/") {
+                UIApplication.shared.open(url)
+            }
+            
+        }
+        
     }
-    
     
     
     //MARK: - Helper

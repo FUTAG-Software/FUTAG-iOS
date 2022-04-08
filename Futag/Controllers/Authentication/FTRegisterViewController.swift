@@ -155,7 +155,7 @@ class FTRegisterViewController: UIViewController {
         return button
     }()
     
-    private let loginAccountButton: UIButton = {
+    private lazy var loginAccountButton: UIButton = {
         let button = Utilities().attributedButton("Zaten Hesabın Var Mı?", " Giriş Yap")
         button.addTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)
         return button
